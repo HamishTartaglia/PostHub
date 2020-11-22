@@ -16,8 +16,19 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) 
         {
             $table->id();
+            $table->integer('score');
+            $table->string('title',100);
+            $table->string('body',1000);
+
+            $table->foreignId('profile_id');
+            $table->foreignId('category_id');
             $table->timestamps();
 
+            $table->foreign('profile_id')->references('id')->
+                on('profiles')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('category_id')->references('id')->
+                on('categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
