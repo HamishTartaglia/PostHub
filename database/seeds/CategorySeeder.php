@@ -16,5 +16,6 @@ class CategorySeeder extends Seeder
         $cat1->name = "Random";
         $cat1->save();
 
+        factory(App\Category::class, 5)->create();
     }
 }

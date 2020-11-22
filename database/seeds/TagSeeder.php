@@ -20,5 +20,6 @@ class TagSeeder extends Seeder
         $tag2->name="wholesome";
         $tag2->save();
 
+        factory(App\Tag::class, 15)->create();
     }
 }
