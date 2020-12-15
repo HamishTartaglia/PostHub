@@ -27,3 +27,5 @@ Route::get('profiles','ProfileController@index')->name('profiles.index');
 Route::get('profiles/{profile}', 'ProfileController@show')->name('profiles.show');
 
 Route::get('categories', 'CategoryController@index')->name('categories.index');
+
+Route::get('categories/{category}', 'CategoryController@show')->name('categories.show');
