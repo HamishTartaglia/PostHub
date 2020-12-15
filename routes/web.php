@@ -25,3 +25,5 @@ Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 Route::get('profiles','ProfileController@index')->name('profiles.index');
 
 Route::get('profiles/{profile}', 'ProfileController@show')->name('profiles.show');
+
+Route::get('categories', 'CategoryController@index')->name('categories.index');
