@@ -11,7 +11,7 @@
     <ul>
         @foreach ($profile->posts as $post)
 
-            <li> <a href = "{{ route('posts.show', ['post' => $post->id]) }}"> {{$post->title}}</li>
+            <li> <a href = "{{ route('posts.show', ['post' => $post->id]) }}"> {{$post->title}} </a> </li>
          
         @endforeach
 

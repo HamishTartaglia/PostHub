@@ -7,8 +7,8 @@
     <ul>
         <li>{{$post->body}}</li>
         <li>Score: {{$post->score}}</li>
-        <li>By: {{$post->profile->username}}</li>
-        <li>From: {{$post->category->name}}</li>
+        <li>By: <a href = "{{ route('profiles.show', ['profile' => $post->profile->id]) }}"> {{$post->profile->username}} </a> </li>
+        <li>From: <a href = "{{ route('categories.show', ['category' => $post->category->id]) }}"> {{$post->category->name}} </a> </li>
 
     </ul>
 
