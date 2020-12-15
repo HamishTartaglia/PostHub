@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('posts','PostController@index')->name('posts.index');
 
+Route::get('profiles','ProfileController@index')->name('profiles.index');
