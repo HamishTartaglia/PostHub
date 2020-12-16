@@ -17,5 +17,15 @@
 
     </ul>
 
+    <p>Posted in:<p>
+    
+    <ul>
+        @foreach ($profile->posts as $post)
+
+            <li><a href = "{{ route('categories.show', ['category' => $post->category->id]) }}"> {{$post->category->name}} </a> </li>
+            
+        @endforeach
+
+    </ul>
 
 @endsection
