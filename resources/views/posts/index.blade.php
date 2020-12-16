@@ -10,6 +10,6 @@
             <li> <a href = "{{ route('posts.show', ['post' => $post->id]) }}">{{$post->title}}</li>
         @endforeach
     </ul>
-
+{{$posts->links()}}
 
 @endsection
