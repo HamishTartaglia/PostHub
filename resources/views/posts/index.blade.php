@@ -12,4 +12,6 @@
     </ul>
 {{$posts->links()}}
 
+    <a href = "{{ route('post.create', ['category' => 1])}}">Create Post</a>
+
 @endsection

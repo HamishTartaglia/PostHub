@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -37,7 +37,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'body' => 'required|max:1000',
+            'profile_id' => 'required|integer',
+            'category_id' => 'required|integer',
+        ]);
+        $post = new Post;
+        $post->title = $validatedData['title'];
+        $post->body = $validatedData['body'];
+        $post->profile_id = $validatedData['profile_id'];
+        $post->category_id = $validatedData['category_id'];
+        $post->save();
+
+        session()->flash('message','Post created!');
+        return redirect()->route('posts.index');
     }
 
     /**
