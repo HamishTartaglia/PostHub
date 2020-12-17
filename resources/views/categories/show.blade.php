@@ -12,5 +12,6 @@
         @endforeach
     </ul>
 
+    <a href = "{{ route('post.create', ['category' => $category])}}">Create Post</a>
 
 @endsection

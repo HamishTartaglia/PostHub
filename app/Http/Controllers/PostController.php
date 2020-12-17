@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -51,7 +53,7 @@ class PostController extends Controller
         $post->save();
 
         session()->flash('message','Post created!');
-        return redirect()->route('posts.index');
+        return redirect()->route('categories.show', ['category' => $post->category->id]);
     }
 
     /**

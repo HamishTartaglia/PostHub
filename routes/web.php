@@ -25,7 +25,7 @@ Route::get('profiles/{profile}', 'ProfileController@show')->name('profiles.show'
 Route::get('categories', 'CategoryController@index')->name('categories.index');
 
 Route::get('categories/{category}', 'CategoryController@show')->name('categories.show');
-    
+
 Route::get('posts','PostController@index')->name('posts.index');
 
 Route::get('categories/{category}/create','PostController@create')->name('post.create');

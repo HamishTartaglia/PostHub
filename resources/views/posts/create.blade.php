@@ -14,9 +14,20 @@
         <p>Profile ID: <input type="text" name="profile_id"
             value="{{ old('profile_id') }} "></p>
 
-        <p>Category ID: <input type="text" name="category_id"#
+        {{--
+        <p>Category ID: <input type="text" name="category_id"
             value="{{ old('category_id') }} "></p>
-            
+            --}}
+
+        <select name = "category_id">
+            @foreach ($categories as $category)
+
+                <option value="{{ $category->id }}">
+                    {{ $category->name}}
+                </option>
+                
+            @endforeach
+
         <input type="submit" value="Submit">
         <a href = "{{ route('posts.index')}}">Cancel</a>
     </form>
