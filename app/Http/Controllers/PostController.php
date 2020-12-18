@@ -55,7 +55,7 @@ class PostController extends Controller
         $post->save();
 
         session()->flash('message','Post created!');
-        return redirect()->route('categories.show', ['category' => $post->category->id]);
+        return redirect()->route('categories.show', ['category' => $post->category]);
     }
 
     /**
