@@ -45,13 +45,13 @@ class PostController extends Controller
             'profile_id' => 'required|integer',
         ]);
 
-        $cat = Category::findOrFail($category);
+        $category = Category::findOrFail($category);
 
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
         $post->profile_id = $validatedData['profile_id'];
-        $post->category_id = $cat->id;
+        $post->category_id = $category->id;
         $post->save();
 
         session()->flash('message','Post created!');

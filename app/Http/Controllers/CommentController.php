@@ -35,9 +35,23 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $post)
     {
-        //
+        $validatedData = $request->validate([
+            'body' => 'required|max:200',
+            'profile_id' => 'required|integer',
+        ]);
+
+        $post = Post::findOrFail($post);
+
+        $comment = new Comment;
+        $comment->body = $validatedData['body'];
+        $comment->profile_id = $validatedData['profile_id'];
+        $comment->post_id = $post->id;
+        $comment->save();
+
+        session()->flash('message','Comment posted!');
+        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
     /**

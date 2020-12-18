@@ -34,4 +34,6 @@ Route::post('posts/{category}','PostController@store')->name('post.store');
 
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 
+Route::get('comments', 'CommentController@index')->name('comments.index');
+
 Route::post('comment/{post}','CommentController@store')->name('comment.store');
