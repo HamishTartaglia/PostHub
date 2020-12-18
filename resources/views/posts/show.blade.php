@@ -20,5 +20,12 @@
             
     </ul>
 
+    <p>Comments: </p>
+    <ul>
+        @foreach ($post->comments as $comment)
+            
+            <li> {{ $comment->body }}
+
+        @endforeach
 
 @endsection
