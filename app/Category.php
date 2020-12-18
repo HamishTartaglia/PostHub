@@ -17,4 +17,9 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Admin');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }

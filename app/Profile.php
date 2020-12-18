@@ -28,4 +28,9 @@ class Profile extends Model
     {
         return $this->hasOne('App\Admin');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 }

@@ -22,7 +22,7 @@
     <ul>
         @foreach ($profile->posts as $post)
 
-            <li><a href = "{{ route('categories.show', ['category' => $post->category->id]) }}"> {{$post->category->name}} </a> </li>
+            <li><a href = "{{ route('categories.show', ['category' => $post->category]) }}"> {{$post->category->name}} </a> </li>
             
         @endforeach
 

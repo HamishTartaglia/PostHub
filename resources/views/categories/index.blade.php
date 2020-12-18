@@ -8,7 +8,7 @@
     <ul>
         @foreach ($categories as $category)
 
-            <li> <a href = "{{ route('categories.show', ['category' => $category->id]) }}"> {{$category->name}}</li>
+            <li> <a href = "{{ route('categories.show', ['category' => $category]) }}"> {{$category->name}}</li>
                 
         @endforeach
     </ul>
