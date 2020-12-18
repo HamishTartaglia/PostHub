@@ -33,3 +33,5 @@ Route::get('categories/{category}/create','PostController@create')->name('post.c
 Route::post('posts/{category}','PostController@store')->name('post.store');
 
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+
+Route::post('comment/{post}','CommentController@store')->name('comment.store');
