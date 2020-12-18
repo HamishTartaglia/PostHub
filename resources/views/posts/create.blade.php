@@ -3,7 +3,7 @@
 @section('title','Create Post')
     
 @section('content')
-    <form method="POST" action="{{ route('post.store')}}">
+    <form method="POST" action="{{ route('post.store', $category->id)}}">
         @csrf
         <p>Title: <input type="text" name="title"
             value="{{ old('title') }} "></p>
@@ -17,16 +17,21 @@
         {{--
         <p>Category ID: <input type="text" name="category_id"
             value="{{ old('category_id') }} "></p>
-            --}}
+            
 
         <select name = "category_id">
             @foreach ($categories as $category)
 
-                <option value="{{ $category->id }}">
+                <option value="{{ $category->id }}"
+                    @if ($category->id == old('category_id'))
+                        selected="selected"
+                    @endif
+                    >
                     {{ $category->name}}
                 </option>
                 
             @endforeach
+            --}}
 
         <input type="submit" value="Submit">
         <a href = "{{ route('posts.index')}}">Cancel</a>

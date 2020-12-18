@@ -30,6 +30,6 @@ Route::get('posts','PostController@index')->name('posts.index');
 
 Route::get('categories/{category}/create','PostController@create')->name('post.create');
 
-Route::post('posts','PostController@store')->name('post.store');
+Route::post('posts/{category}','PostController@store')->name('post.store');
 
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');

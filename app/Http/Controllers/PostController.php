@@ -25,10 +25,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category)
     {
-        $categories = Category::all();
-        return view('posts.create', compact('categories'));
+        //$categories = Category::orderBy('name', 'asc')->get();
+        return view('posts.create', ['category' => $category]);
     }
 
     /**
@@ -37,19 +37,21 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $category)
     {
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'body' => 'required|max:1000',
             'profile_id' => 'required|integer',
-            'category_id' => 'required|integer',
         ]);
+
+        $cat = Category::findOrFail($category);
+
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
         $post->profile_id = $validatedData['profile_id'];
-        $post->category_id = $validatedData['category_id'];
+        $post->category_id = $cat->id;
         $post->save();
 
         session()->flash('message','Post created!');
