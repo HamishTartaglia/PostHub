@@ -5,12 +5,14 @@
 @section('content')
 
     <ul>
-        @foreach ($category->posts as $post)
+        @foreach ($posts as $post)
 
             <li> <a href = "{{ route('posts.show', ['post' => $post->id]) }}"> {{$post->title}} </a> </li>
      
         @endforeach
     </ul>
+
+    {{$posts->links()}}
 
     <a href = "{{ route('post.create', ['category' => $category])}}">Create Post</a>
 
