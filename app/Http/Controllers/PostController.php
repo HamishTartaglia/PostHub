@@ -103,6 +103,6 @@ class PostController extends Controller
         $category = $post->category;
         $post->delete();
 
-        return redirect()->route('categories.show',['category' => $category ])->with('message','Post Deleted!');
+        return redirect()->route('categories.show',['category' => $category])->with('message','Post Deleted!');
     }
 }

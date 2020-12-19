@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -51,7 +52,7 @@ class CommentController extends Controller
         $comment->save();
 
         session()->flash('message','Comment posted!');
-        return redirect()->route('posts.show', ['post' => $post->id]);
+        return redirect()->route('posts.show', ['category' => $post->category,'post' => $post->id ]);
     }
 
     /**
@@ -96,6 +97,10 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $category = $comment->post->category;
+        $post = $comment->post;
+        $comment->delete();
+
+        return redirect()->route('posts.show', ['category' => $category,'post' => $post])->with('message','Post Deleted!');
     }
 }

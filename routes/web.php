@@ -39,3 +39,5 @@ Route::get('comments', 'CommentController@index')->name('comments.index');
 Route::post('comment/{post}','CommentController@store')->name('comment.store');
 
 Route::delete('posts/{post}','PostController@destroy')->name('post.destroy');
+
+Route::delete('comments/{comment}','CommentController@destroy')->name('comment.destroy');

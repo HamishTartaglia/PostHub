@@ -39,6 +39,12 @@
         @foreach ($post->comments as $comment)
             
             <li> {{ $comment->body }}
+                <form action="{{ route('comment.destroy', ['comment' => $comment])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
 
         @endforeach
 

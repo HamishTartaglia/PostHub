@@ -8,7 +8,7 @@
     <ul>
         @foreach ($comments as $comment)
 
-            <li> <a href = "{{ route('posts.show', ['post' => $comment->post]) }}">{{$comment->body}}</li>
+            <li> <a href = "{{ route('posts.show', ['category' => $comment->post->category ,'post' => $comment->post]) }}">{{$comment->body}} </a> </li>
                 
         @endforeach
     </ul>
