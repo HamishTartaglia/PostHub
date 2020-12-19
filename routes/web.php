@@ -32,7 +32,7 @@ Route::get('categories/{category}/create','PostController@create')->name('post.c
 
 Route::post('posts/{category}','PostController@store')->name('post.store');
 
-Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+Route::get('categories/{category}/{post}', 'PostController@show')->name('posts.show');
 
 Route::get('comments', 'CommentController@index')->name('comments.index');
 

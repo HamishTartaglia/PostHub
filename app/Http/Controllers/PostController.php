@@ -64,9 +64,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Category $category, Post $post)
     {
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', ['category' => $category,'post' => $post]);
     }
 
     /**
