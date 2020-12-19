@@ -100,6 +100,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $category = $post->category;
+        $post->delete();
+
+        return redirect()->route('categories.show',['category' => $category ])->with('message','Post Deleted!');
     }
 }

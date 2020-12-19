@@ -19,6 +19,12 @@
             </ul>
     </ul>
 
+    <form action="{{ route('post.destroy', ['post' => $post]) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete Post</button>
+    </form>
+
     <form method="POST" action="{{ route('comment.store', $post) }}">
         @csrf
         <p>Body: <input type="text" name="body"
