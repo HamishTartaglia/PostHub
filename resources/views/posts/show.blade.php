@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appLayout')
 
 @section('title', $post->title)
 
@@ -42,7 +42,7 @@
             
             <li> {{ $comment->body }}
                 <button><a href="{{ route('comment.edit', ['comment' => $comment]) }}"> Edit</a></button>
-                
+
                 <form action="{{ route('comment.destroy', ['comment' => $comment])}}" method="POST">
                     @csrf
                     @method('DELETE')

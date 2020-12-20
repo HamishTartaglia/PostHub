@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,3 +48,7 @@ Route::put('categories/{category}/{post}', 'PostController@update')->name('post.
 Route::get('comments/{comment}/edit','CommentController@edit')->name('comment.edit');
 
 Route::put('comments/{comment}', 'CommentController@update')->name('comment.update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

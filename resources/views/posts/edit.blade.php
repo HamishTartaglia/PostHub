@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appLayout')
 
 @section('title','Edit Post')
     
@@ -36,7 +36,7 @@
             --}}
 
         <input type="submit" value="Submit">
-        <a href = "{{ route('posts.index')}}">Cancel</a>
+        <a href = "{{ route('posts.show', ['category' => $category,'post' => $post->id ])}}">Cancel</a>
     </form>
     
 @endsection
