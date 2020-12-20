@@ -25,6 +25,8 @@
         <button type="submit">Delete Post</button>
     </form>
 
+    <button><a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}"> Edit Post </a></button>
+
     <form method="POST" action="{{ route('comment.store', $post) }}">
         @csrf
         <p>Body: <input type="text" name="body"

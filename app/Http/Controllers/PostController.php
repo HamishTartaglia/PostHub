@@ -75,9 +75,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Category $category, Post $post)
     {
-        //
+        return view('posts.edit', ['category' => $category, 'post' => $post]);
     }
 
     /**
@@ -87,9 +87,20 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Category $category, Post $post)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'body' => 'required|max:1000',
+            'profile_id' => 'required|integer',
+        ]);
+
+        $post->title = $validatedData['title'];
+        $post->body = $validatedData['body'];
+        $post->profile_id = $validatedData['profile_id'];
+        $post->save();
+
+        return redirect()->route('posts.show', ['category' => $category,'post' => $post])->with('message','Post Updated!');
     }
 
     /**
