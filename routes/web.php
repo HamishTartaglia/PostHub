@@ -45,3 +45,7 @@ Route::delete('comments/{comment}','CommentController@destroy')->name('comment.d
 Route::get('categories/{category}/{post}/edit','PostController@edit')->name('post.edit');
 
 Route::put('categories/{category}/{post}', 'PostController@update')->name('post.update');
+
+Route::get('comments/{comment}/edit','CommentController@edit')->name('comment.edit');
+
+Route::put('comments/{comment}', 'CommentController@update')->name('comment.update');

@@ -74,7 +74,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -86,7 +86,16 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $validatedData = $request->validate([
+            'body' => 'required|max:200',
+            'profile_id' => 'required|integer',
+        ]);
+
+        $comment->body = $validatedData['body'];
+        $comment->profile_id = $validatedData['profile_id'];
+        $comment->save();
+
+        return redirect()->route('posts.show', ['category' => $comment->post->category,'post' => $comment->post])->with('message','Comment Updated!');
     }
 
     /**
@@ -101,6 +110,6 @@ class CommentController extends Controller
         $post = $comment->post;
         $comment->delete();
 
-        return redirect()->route('posts.show', ['category' => $category,'post' => $post])->with('message','Post Deleted!');
+        return redirect()->route('posts.show', ['category' => $category,'post' => $post])->with('message','Comment Deleted!');
     }
 }
