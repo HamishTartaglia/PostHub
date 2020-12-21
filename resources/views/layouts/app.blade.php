@@ -93,9 +93,10 @@
                     </ul>
                 </div>                
             @endif
-            
+
             @yield('content')
         </main>
     </div>
+    <a href="{{ route('logout') }}">Logout</a>
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -82,5 +83,12 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         //
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('home')->with('message','Logged Out!');
     }
 }
