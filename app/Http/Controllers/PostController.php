@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -42,7 +43,6 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'body' => 'required|max:1000',
-            'profile_id' => 'required|integer',
         ]);
 
         $category = Category::findOrFail($category);
@@ -50,7 +50,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->profile_id = $validatedData['profile_id'];
+        $post->profile_id = Auth::id();
         $post->category_id = $category->id;
         $post->save();
 
@@ -92,12 +92,11 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'body' => 'required|max:1000',
-            'profile_id' => 'required|integer',
         ]);
 
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->profile_id = $validatedData['profile_id'];
+        $post->profile_id = Auth::id();
         $post->save();
 
         return redirect()->route('posts.show', ['category' => $category,'post' => $post])->with('message','Post Updated!');

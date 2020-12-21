@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Post;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -40,14 +41,13 @@ class CommentController extends Controller
     {
         $validatedData = $request->validate([
             'body' => 'required|max:200',
-            'profile_id' => 'required|integer',
         ]);
 
         $post = Post::findOrFail($post);
 
         $comment = new Comment;
         $comment->body = $validatedData['body'];
-        $comment->profile_id = $validatedData['profile_id'];
+        $comment->profile_id = Auth::id();
         $comment->post_id = $post->id;
         $comment->save();
 
@@ -88,11 +88,10 @@ class CommentController extends Controller
     {
         $validatedData = $request->validate([
             'body' => 'required|max:200',
-            'profile_id' => 'required|integer',
         ]);
 
         $comment->body = $validatedData['body'];
-        $comment->profile_id = $validatedData['profile_id'];
+        $comment->profile_id = Auth::id();
         $comment->save();
 
         return redirect()->route('posts.show', ['category' => $comment->post->category,'post' => $comment->post])->with('message','Comment Updated!');

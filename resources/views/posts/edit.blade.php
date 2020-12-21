@@ -13,9 +13,6 @@
         <p>Body: <input type="text" name="body"
             value="{{$post->body}}"></p>
 
-        <p>Profile ID: <input type="text" name="profile_id"
-            value="{{$post->profile_id}}"> </p>
-
         {{--
         <p>Category ID: <input type="text" name="category_id"
             value="{{ old('category_id') }} "></p>

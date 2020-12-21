@@ -31,9 +31,7 @@
         @csrf
         <input type="text" name="body"
             value = "{{ old('body') }}" 
-            placeholder="Comment"> 
-        <p>Profile ID: <input type="text" name="profile_id"
-            value = "{{ old('profile_id') }}"> </p>        
+            placeholder="Comment">
         <input type="submit" value="Submit">
     </form>
 
