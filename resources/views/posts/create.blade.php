@@ -34,6 +34,6 @@
             --}}
 
         <input type="submit" value="Submit">
-        <a href = "{{ route('posts.index')}}">Cancel</a>
+        <a href = "{{ route('categories.show', ['category' => $category ])}}">Cancel</a>
     </form>
 @endsection
