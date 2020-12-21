@@ -29,8 +29,9 @@
 
     <form method="POST" action="{{ route('comment.store', $post) }}">
         @csrf
-        <p>Body: <input type="text" name="body"
-            value = "{{ old('body') }}"> </p>
+        <input type="text" name="body"
+            value = "{{ old('body') }}" 
+            placeholder="Comment"> 
         <p>Profile ID: <input type="text" name="profile_id"
             value = "{{ old('profile_id') }}"> </p>        
         <input type="submit" value="Submit">
