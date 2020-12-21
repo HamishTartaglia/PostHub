@@ -40,6 +40,7 @@
         @foreach ($post->comments as $comment)
             
             <li> {{ $comment->body }}
+                <p> Posted: {{ $comment->created_at->diffForHumans() }} </p>
                 <button><a href="{{ route('comment.edit', ['comment' => $comment]) }}"> Edit</a></button>
 
                 <form action="{{ route('comment.destroy', ['comment' => $comment])}}" method="POST">
