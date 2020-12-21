@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index');
 
 Route::get('profiles','ProfileController@index')->name('profiles.index');
 
