@@ -53,6 +53,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', 'ProfileController@logout')->name('logout');
 
-Route::get('profiles/{profile}/edit','ProfileController@edit')->name('profile.edit');
+Route::get('profiles/{profile}/edit','ProfileController@edit')->name('profile.edit')->middleware('can:update,profile');
 
-Route::put('profiles/{profile}', 'ProfileController@update')->name('profile.update');
+Route::put('profiles/{profile}', 'ProfileController@update')->name('profile.update')->middleware('can:update,profile');

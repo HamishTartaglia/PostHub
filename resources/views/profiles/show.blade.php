@@ -6,7 +6,9 @@
 
     <p>Bio: {{$profile->bio}}</p>
 
-    <button><a href="{{ route('profile.edit', ['profile' => $profile]) }}"> Edit</a></button>
+    @can('update', $profile)
+        <button><a href="{{ route('profile.edit', ['profile' => $profile]) }}"> Edit</a></button>
+    @endcan
 
     <p>Score: {{$profile->score}}</p>
     <p>Posts:</p>
