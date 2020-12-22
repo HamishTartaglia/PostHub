@@ -77,7 +77,7 @@ class PostController extends Controller
      */
     public function edit(Category $category, Post $post)
     {
-        $this->authorize('update-post',$post);
+        $this->authorize('update',$post);
         return view('posts.edit', ['category' => $category, 'post' => $post]);
     }
 
@@ -90,7 +90,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Category $category, Post $post)
     {
-        $this->authorize('update-post',$post);
+        $this->authorize('update',$post);
 
         $validatedData = $request->validate([
             'title' => 'required|max:100',
@@ -112,7 +112,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $this->authorize('delete-post',$post);
+        $this->authorize('delete',$post);
         $category = $post->category;
         $post->delete();
 
