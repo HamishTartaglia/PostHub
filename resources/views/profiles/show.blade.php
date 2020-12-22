@@ -11,6 +11,7 @@
     @endcan
 
     <p>Score: {{$profile->score}}</p>
+    <p>Account created: {{ $profile->created_at->diffForHumans() }} </p>
     <p>Posts:</p>
 
     <ul>
