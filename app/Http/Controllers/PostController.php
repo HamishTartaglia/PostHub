@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -50,12 +51,11 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->profile_id = Auth::id();
+        $post->profile_id = Auth::user()->id;
         $post->category_id = $category->id;
         $post->save();
 
-        session()->flash('message','Post created!');
-        return redirect()->route('categories.show', ['category' => $post->category]);
+        return redirect()->route('categories.show', ['category' => $post->category])->with('message','Post created!');
     }
 
     /**
@@ -77,6 +77,7 @@ class PostController extends Controller
      */
     public function edit(Category $category, Post $post)
     {
+        $this->authorize('update-post',$post);
         return view('posts.edit', ['category' => $category, 'post' => $post]);
     }
 
@@ -89,6 +90,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Category $category, Post $post)
     {
+        $this->authorize('update-post',$post);
+
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'body' => 'required|max:1000',
@@ -96,7 +99,6 @@ class PostController extends Controller
 
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->profile_id = Auth::id();
         $post->save();
 
         return redirect()->route('posts.show', ['category' => $category,'post' => $post])->with('message','Post Updated!');
@@ -110,6 +112,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('delete-post',$post);
         $category = $post->category;
         $post->delete();
 

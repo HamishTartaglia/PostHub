@@ -19,13 +19,16 @@
             </ul>
     </ul>
 
-    <button><a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}"> Edit Post </a></button>
+    @can('update-post', $post)
+        <button><a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}"> Edit Post </a></button>
+    
 
-    <form action="{{ route('post.destroy', ['post' => $post]) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Delete Post</button>
-    </form>
+        <form action="{{ route('post.destroy', ['post' => $post]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete Post</button>
+        </form>
+    @endcan 
 
     <form method="POST" action="{{ route('comment.store', $post) }}">
         @csrf
