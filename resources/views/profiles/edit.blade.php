@@ -7,8 +7,8 @@
     <form method="POST" action="{{ route('profile.update', ['profile' => $profile])}}">
         @csrf
         @method('PUT')
-        <p>Description: <input type="text" name="description"
-            value="{{$profile->description}}"> </p>
+        <p>Bio: <input type="text" name="bio"
+            value="{{$profile->bio}}"> </p>
 
         <input type="submit" value="Submit">
         <a href = "{{ route('profiles.show', ['profile' => $profile])}}">Cancel</a>

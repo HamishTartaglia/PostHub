@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->string('username',20)->unique();
             $table->integer('score');
-            $table->string('description',50);
+            $table->string('bio',50);
 
             $table->foreignId('user_id');
             $table->timestamps();

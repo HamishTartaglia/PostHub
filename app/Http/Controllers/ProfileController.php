@@ -72,10 +72,10 @@ class ProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         $validatedData = $request->validate([
-            'description' => 'required|max:50',
+            'bio' => 'required|max:50',
         ]);
 
-        $profile->description = $validatedData['description'];
+        $profile->bio = $validatedData['bio'];
         $profile->save();
 
         return redirect()->route('profiles.show', ['profile' => $profile])->with('message','Profile Updated!');

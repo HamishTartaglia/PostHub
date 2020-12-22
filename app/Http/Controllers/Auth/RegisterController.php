@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:20','unique:profiles', 'alpha_dash'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'bio' => ['required','string', 'max:50']
         ]);
     }
 
@@ -72,7 +73,7 @@ class RegisterController extends Controller
 
         $profile = new Profile;
         $profile->username = $data['username'];
-        $profile->description = $data['description'];
+        $profile->bio = $data['bio'];
         $profile->user_id = $user->id;
         $profile->save();
 

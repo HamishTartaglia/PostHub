@@ -9,7 +9,7 @@ $factory->define(Profile::class, function (Faker $faker)
 {
     return [
         'username' => $faker->userName,
-        'description' =>$faker->sentence(3),
+        'bio' =>$faker->sentence(3),
         'user_id' => factory(App\User::class)->create()->id,
     ];
 });
