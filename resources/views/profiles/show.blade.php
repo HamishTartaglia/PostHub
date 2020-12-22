@@ -34,4 +34,17 @@
 
     </ul>
 
+    @can('update', $profile)
+        <a href="{{ route('logout') }}">Logout</a>
+    @endcan
+
+    @can('delete', $profile)
+        <form action="{{ route('profile.destroy', ['profile' => $profile]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete Profile</button>
+        </form>
+    @endcan
+    
+
 @endsection

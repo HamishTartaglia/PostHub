@@ -37,7 +37,9 @@ Route::post('comment/{post}','CommentController@store')->name('comment.store');
 
 Route::delete('posts/{post}','PostController@destroy')->name('post.destroy')->middleware('can:delete,post');
 
-Route::delete('comments/{comment}','CommentController@destroy')->name('comment.destroy')->middleware('can:delete,comment');;
+Route::delete('comments/{comment}','CommentController@destroy')->name('comment.destroy')->middleware('can:delete,comment');
+
+Route::delete('profiles/{profile}','ProfileController@destroy')->name('profile.destroy')->middleware('can:delete,profile');
 
 Route::get('categories/{category}/{post}/edit','PostController@edit')->name('post.edit')->middleware('can:update,post');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -89,7 +90,12 @@ class ProfileController extends Controller
      */
     public function destroy(Profile $profile)
     {
-        //
+        $id = $profile->id;
+        $user = User::find($id);
+        $user->delete();
+        $profile->delete();
+
+        return redirect()->route('home')->with('message','Post Deleted!');
     }
 
     /**
