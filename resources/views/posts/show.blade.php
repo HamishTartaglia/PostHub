@@ -47,13 +47,18 @@
             
             <li> {{ $comment->body }}
                 <p> Posted: {{ $comment->created_at->diffForHumans() }} </p>
-                <button><a href="{{ route('comment.edit', ['comment' => $comment]) }}"> Edit</a></button>
 
-                <form action="{{ route('comment.destroy', ['comment' => $comment])}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Delete</button>
-                </form>
+                @can('update', $post)
+                    <button><a href="{{ route('comment.edit', ['comment' => $comment]) }}"> Edit</a></button>
+                @endcan
+
+                @can('delete', $post)
+                    <form action="{{ route('comment.destroy', ['comment' => $comment])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                @endcan
             </li>
 
         @endforeach

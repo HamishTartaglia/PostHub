@@ -74,6 +74,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
+        $this->authorize('update',$comment);
         return view('comments.edit', ['comment' => $comment]);
     }
 
@@ -86,6 +87,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
+        $this->authorize('update',$comment);
         $validatedData = $request->validate([
             'body' => 'required|max:200',
         ]);
@@ -105,6 +107,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        $this->authorize('update',$comment);
         $category = $comment->post->category;
         $post = $comment->post;
         $comment->delete();
