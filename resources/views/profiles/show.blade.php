@@ -5,6 +5,9 @@
 @section('content')
 
     <p>Description: {{$profile->description}}</p>
+
+    <button><a href="{{ route('profile.edit', ['profile' => $profile]) }}"> Edit</a></button>
+
     <p>Score: {{$profile->score}}</p>
     <p>Posts:</p>
 

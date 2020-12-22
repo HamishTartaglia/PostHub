@@ -59,7 +59,7 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        //
+        return view('profiles.edit', ['profile' => $profile]);
     }
 
     /**
@@ -71,7 +71,14 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        $validatedData = $request->validate([
+            'description' => 'required|max:50',
+        ]);
+
+        $profile->description = $validatedData['description'];
+        $profile->save();
+
+        return redirect()->route('profiles.show', ['profile' => $profile])->with('message','Profile Updated!');
     }
 
     /**
@@ -85,6 +92,9 @@ class ProfileController extends Controller
         //
     }
 
+    /**
+     * Logs the current user out
+     */
     public function logout()
     {
         Auth::logout();

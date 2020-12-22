@@ -52,3 +52,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', 'ProfileController@logout')->name('logout');
+
+Route::get('profiles/{profile}/edit','ProfileController@edit')->name('profile.edit');
+
+Route::put('profiles/{profile}', 'ProfileController@update')->name('profile.update');
