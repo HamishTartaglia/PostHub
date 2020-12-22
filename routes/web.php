@@ -35,17 +35,17 @@ Route::get('comments', 'CommentController@index')->name('comments.index');
 
 Route::post('comment/{post}','CommentController@store')->name('comment.store');
 
-Route::delete('posts/{post}','PostController@destroy')->name('post.destroy');
+Route::delete('posts/{post}','PostController@destroy')->name('post.destroy')->middleware('can:delete,post');
 
-Route::delete('comments/{comment}','CommentController@destroy')->name('comment.destroy');
+Route::delete('comments/{comment}','CommentController@destroy')->name('comment.destroy')->middleware('can:delete,comment');;
 
-Route::get('categories/{category}/{post}/edit','PostController@edit')->name('post.edit');
+Route::get('categories/{category}/{post}/edit','PostController@edit')->name('post.edit')->middleware('can:update,post');
 
-Route::put('categories/{category}/{post}', 'PostController@update')->name('post.update');
+Route::put('categories/{category}/{post}', 'PostController@update')->name('post.update')->middleware('can:update,post');
 
-Route::get('comments/{comment}/edit','CommentController@edit')->name('comment.edit');
+Route::get('comments/{comment}/edit','CommentController@edit')->name('comment.edit')->middleware('can:update,comment');
 
-Route::put('comments/{comment}', 'CommentController@update')->name('comment.update');
+Route::put('comments/{comment}', 'CommentController@update')->name('comment.update')->middleware('can:update,comment');
 
 Auth::routes();
 

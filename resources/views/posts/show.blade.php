@@ -48,11 +48,11 @@
             <li> {{ $comment->body }}
                 <p> Posted: {{ $comment->created_at->diffForHumans() }} </p>
 
-                @can('update', $post)
+                @can('update', $comment)
                     <button><a href="{{ route('comment.edit', ['comment' => $comment]) }}"> Edit</a></button>
                 @endcan
 
-                @can('delete', $post)
+                @can('delete', $comment)
                     <form action="{{ route('comment.destroy', ['comment' => $comment])}}" method="POST">
                         @csrf
                         @method('DELETE')

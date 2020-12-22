@@ -17,7 +17,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        //$posts = Post::all();
         $posts = Post::simplePaginate(5);
         return(view('posts.index',['posts' => $posts]));
     }
@@ -29,7 +28,6 @@ class PostController extends Controller
      */
     public function create(Category $category)
     {
-        //$categories = Category::orderBy('name', 'asc')->get();
         return view('posts.create', ['category' => $category]);
     }
 
@@ -55,7 +53,7 @@ class PostController extends Controller
         $post->category_id = $category->id;
         $post->save();
 
-        return redirect()->route('categories.show', ['category' => $post->category])->with('message','Post created!');
+        return redirect()->route('posts.show', ['category' => $category, 'post' => $post])->with('message','Post created!');
     }
 
     /**
@@ -77,7 +75,6 @@ class PostController extends Controller
      */
     public function edit(Category $category, Post $post)
     {
-        $this->authorize('update',$post);
         return view('posts.edit', ['category' => $category, 'post' => $post]);
     }
 
@@ -90,8 +87,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Category $category, Post $post)
     {
-        $this->authorize('update',$post);
-
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'body' => 'required|max:1000',
@@ -112,7 +107,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $this->authorize('delete',$post);
         $category = $post->category;
         $post->delete();
 
