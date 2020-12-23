@@ -111,4 +111,22 @@ class CommentController extends Controller
 
         return redirect()->route('posts.show', ['category' => $category,'post' => $post])->with('message','Comment Deleted!');
     }
+
+    public function apiIndex(Post $post)
+    {
+        $comments = Comment::where('post_id', $post->id)->get(); 
+        return $comments;
+    }
+
+    public function apiStore(Request $request, Post $post)
+    {
+        // validation
+
+        $comment = new Comment;
+        $comment->body = $request['body'];
+        $comment->profile_id = Auth::id();
+        $comment->post_id = $post->id;
+        $comment->save();
+        return $comment;
+    }
 }
