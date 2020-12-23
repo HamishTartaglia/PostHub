@@ -62,5 +62,27 @@
             </li>
 
         @endforeach
+    
+    <div id="test">
+        <p> @{{ comments }}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#test",
+            data:{
+                comments: [],
+            },
+            mounted(){
+                axios.get("{{ route('api.comments.index', ['post' => $post]) }}")
+                .then( response =>{
+                    this.comments = response.data;
+                })
+                .catch(response => {
+                    console.log(response)
+                })
+            },
+        });
+    </script>
 
 @endsection
