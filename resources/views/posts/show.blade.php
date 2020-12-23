@@ -63,13 +63,15 @@
 
         @endforeach
     
-    <div id="test">
-        <p> @{{ comments }}</p>
+    <div id="comments">
+        <ul>
+            <li v-for="comment in comments">@{{ comment.body }}</li>
+        </ul>
     </div>
 
     <script>
         var app = new Vue({
-            el: "#test",
+            el: "#comments",
             data:{
                 comments: [],
             },
