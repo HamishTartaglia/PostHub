@@ -7,11 +7,11 @@
     <div class="container">
         <ul>
                 @foreach ($posts as $post)
-                    <div>
+                    <div class="post" onclick="location.href='{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}'">
 
                         <li class="list-unstyled"> 
-                            <a href = "{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}"> {{$post->title}} </a> <br>
-                            <a> {{$post->body}} </a><br>
+                            {{$post->title}}<br>
+                            {{$post->body}} <br>
                             <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a>
                             <p> Posted: {{ $post->created_at->diffForHumans() }} </p>
                         </li>

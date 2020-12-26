@@ -1,0 +1,7 @@
+.post{
+    border-bottom: 1px solid gray;
+}
+.post:hover {
+    cursor: pointer;
+    border: 1px solid gray;
+}
