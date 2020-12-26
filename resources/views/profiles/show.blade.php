@@ -8,20 +8,20 @@
 
         <div class="d-flex" id="wrapper">
 
-            <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
-              <div class="sidebar-heading">{{$profile->username}} </div>
-              <div class="list-group list-group-flush">
-                <p>Bio: {{$profile->bio}}</p>
-                <p>Score: {{$profile->score}}</p>
-                <p>Account created: {{ $profile->created_at->diffForHumans() }} </p>
-              </div>
+                <div class="list-group list-group-flush">
+                    <h5> {{$profile->username}} </h5>
+                    <p>Bio: {{$profile->bio}}</p>
+                    <p>Score: {{$profile->score}}</p>
+                    <p>Account created: {{ $profile->created_at->diffForHumans() }} </p>
+                </div>
             </div>
 
             <div id="page-content-wrapper">
                 @can('update', $profile)
-            <button><a href="{{ route('profile.edit', ['profile' => $profile]) }}"> Edit</a></button>
-        @endcan
+                    <a href="{{ route('profile.edit', ['profile' => $profile]) }}">Edit</a>
+                @endcan
+            </div>
         </div>
         
 
