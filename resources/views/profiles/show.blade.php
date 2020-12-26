@@ -52,8 +52,20 @@
                     <p>Posts:</p>
                     <ul>
                         @foreach ($profile->posts as $post)
-                            <li> <a href = "{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}"> {{$post->title}} </a> </li>
+                            <div class="post" onclick="location.href='{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}'">
+                                <li class="list-unstyled"> 
+                                    <h6> {{$post->title}} </h6>
+                                    <p class="text-muted">{{ Illuminate\Support\Str::limit($post->body, $limit = 100, $end = '...') }}</p>
+                                    <div class="navbar">
+                                        <p class="postedBy">Posted by:
+                                            <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a></p>
+                                        <p class="posted"> Posted: {{ $post->created_at->diffForHumans() }} </p>
+                                    </div>
+                                </li>
+                            </div><br>
                         @endforeach
+                    </ul>
+                    
                     </ul>
                 @endif
                 
