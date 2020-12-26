@@ -34,11 +34,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link {{ request()->is('categories/Animals') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Animals' ]) }}"> Animals </a></li>
-                        <li class="nav-item"><a class="nav-link {{ request()->is('categories/Funny') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Funny' ]) }}"> Funny </a></li>
-                        <li class="nav-item"><a class="nav-link {{ request()->is('categories/Gaming') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Gaming' ]) }}"> Gaming </a></li>
-                        <li class="nav-item"><a class="nav-link {{ request()->is('categories/AskAnything') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'AskAnything' ]) }}"> AskAnything </a></li>
-                        <li class="nav-item"><a class="nav-link {{ request()->is('categories/Misc') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Misc' ]) }}"> Misc </a></li>
+                        <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/Animals') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Animals' ]) }}"> Animals </a></li>
+                        <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/Funny') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Funny' ]) }}"> Funny </a></li>
+                        <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/Gaming') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Gaming' ]) }}"> Gaming </a></li>
+                        <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/AskAnything') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'AskAnything' ]) }}"> AskAnything </a></li>
+                        <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/Misc') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Misc' ]) }}"> Misc </a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
