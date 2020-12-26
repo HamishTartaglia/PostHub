@@ -15,7 +15,7 @@
                             <div class="navbar">
                                 <footer class="blockquote-footer">Posted by:
                                     <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a></footer>
-                                <p> Posted: {{ $post->created_at->diffForHumans() }} </p>
+                                <p class="posted"> Posted: {{ $post->created_at->diffForHumans() }} </p>
                             </div>
                         </li>
 
