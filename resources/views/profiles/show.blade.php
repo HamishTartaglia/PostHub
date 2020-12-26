@@ -47,9 +47,13 @@
 
             <div id="page-content-wrapper">
                 @if ($profile->posts->isEmpty())
-                    <p>No posts yet!</p>
+                    <div class="d-flex justify-content-center">
+                        <h5>No posts yet!</h5>
+                    </div>
                 @else
-                    <p>Posts:</p>
+                    <div class="d-flex justify-content-center">
+                        <h5>Posts:</h5>
+                    </div>
                     <ul>
 
                         @php
