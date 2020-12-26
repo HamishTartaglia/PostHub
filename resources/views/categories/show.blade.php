@@ -24,7 +24,10 @@
                 @endforeach
             </ul>
 
-            {{$posts->links()}}
+            <div class="d-flex justify-content-center">
+                {{$posts->links()}}
+            </div>
+
 
             <a href = "{{ route('post.create', ['category' => $category])}}">Create Post</a>
     </div>
