@@ -26,17 +26,20 @@
                             <li><a href = "{{ route('categories.show', ['category' => $post->category]) }}"> {{$post->category->name}} </a> </li>
                         @endforeach
                     </ul>
-                    @can('update', $profile)
-                        <a href="{{ route('logout') }}">Logout</a>
-                    @endcan
 
-                    @can('delete', $profile)
-                        <form action="{{ route('profile.destroy', ['profile' => $profile]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Delete Profile</button>
-                        </form>
-                    @endcan
+                    <div class="navbar">
+                        @can('update', $profile)
+                            <a href="{{ route('logout') }}"><button class="btn">Logout</button></a>
+                        @endcan
+
+                        @can('delete', $profile)
+                            <form action="{{ route('profile.destroy', ['profile' => $profile]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn">Delete Profile</button>
+                            </form>
+                        @endcan
+                    </div>                    
                 </div>
             </div>
 
