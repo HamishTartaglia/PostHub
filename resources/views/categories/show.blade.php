@@ -10,10 +10,12 @@
                     <div class="post" onclick="location.href='{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}'">
 
                         <li class="list-unstyled"> 
-                            {{$post->title}}<br>
-                            {{$post->body}} <br>
-                            <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a>
-                            <p> Posted: {{ $post->created_at->diffForHumans() }} </p>
+                            <h6>{{$post->title}}</h2>
+                            <p>{{ Illuminate\Support\Str::limit($post->body, $limit = 100, $end = '...') }}</p>
+                            <div class="navbar">
+                                <p><a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a></p>
+                                <p> Posted: {{ $post->created_at->diffForHumans() }} </p>
+                            </div>
                         </li>
 
             
