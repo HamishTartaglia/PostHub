@@ -5,6 +5,10 @@
 @section('content')
 
     <div class="container">
+        <div class="d-flex justify-content-end">
+            <a href = "{{ route('post.create', ['category' => $category])}}"><button type="button" class="btn">Create Post</button></a>
+        </div>
+        <br>
         <ul>
                 @foreach ($posts as $post)
                     <div class="post" onclick="location.href='{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}'">
@@ -27,9 +31,6 @@
             <div class="d-flex justify-content-center">
                 {{$posts->links()}}
             </div>
-
-
-            <a href = "{{ route('post.create', ['category' => $category])}}">Create Post</a>
     </div>
     
 
