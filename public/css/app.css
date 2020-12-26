@@ -49,4 +49,8 @@ h5, h6{
     border-radius: 20px;
     height: 100%;
     overflow: hidden;
+    min-width: 250px;
+}
+#page-content-wrapper{
+    width: 100%;
 }
