@@ -13,7 +13,8 @@
                             <h6>{{$post->title}}</h2>
                             <p class="text-muted">{{ Illuminate\Support\Str::limit($post->body, $limit = 100, $end = '...') }}</p>
                             <div class="navbar">
-                                <p><a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a></p>
+                                <footer class="blockquote-footer">Posted by:
+                                    <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a></footer>
                                 <p> Posted: {{ $post->created_at->diffForHumans() }} </p>
                             </div>
                         </li>
