@@ -20,12 +20,14 @@
                     <p>Bio: {{$profile->bio}}</p>
                     <p>Score: {{$profile->score}}</p>
                     <p>Account created: {{ $profile->created_at->diffForHumans() }} </p>
-                    <p>Posted in:<p>
-                    <ul>
-                        @foreach ($profile->posts->unique('category_id') as $post)
-                            <li><a href = "{{ route('categories.show', ['category' => $post->category]) }}"> {{$post->category->name}} </a> </li>
-                        @endforeach
-                    </ul>
+                    @if (!$profile->posts->isEmpty())
+                        <p>Posted in:<p>
+                        <ul>
+                            @foreach ($profile->posts->unique('category_id') as $post)
+                                <li><a href = "{{ route('categories.show', ['category' => $post->category]) }}"> {{$post->category->name}} </a> </li>
+                            @endforeach
+                        </ul>
+                    @endif
 
                     <div class="navbar">
                         @can('update', $profile)
