@@ -26,7 +26,7 @@
     <p>Posted in:<p>
     
     <ul>
-        @foreach ($profile->posts as $post)
+        @foreach ($profile->posts->unique('category_id') as $post)
 
             <li><a href = "{{ route('categories.show', ['category' => $post->category]) }}"> {{$post->category->name}} </a> </li>
             
