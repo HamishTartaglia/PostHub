@@ -48,7 +48,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $posts = Post::where('category_id', $category->id)->simplePaginate(5);
+        $posts = Post::where('category_id', $category->id)->simplePaginate(10);
         return view('categories.show', ['category' => $category], compact('posts'));
     }
 
