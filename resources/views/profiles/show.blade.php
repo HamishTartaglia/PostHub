@@ -51,7 +51,12 @@
                 @else
                     <p>Posts:</p>
                     <ul>
-                        @foreach ($profile->posts as $post)
+
+                        @php
+                            $posts = App\Post::where('profile_id', $profile->id)->simplePaginate(10);
+                        @endphp
+
+                        @foreach ($posts as $post)
                             <div class="post" onclick="location.href='{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}'">
                                 <li class="list-unstyled"> 
                                     <h6> {{$post->title}} </h6>
@@ -65,8 +70,11 @@
                             </div><br>
                         @endforeach
                     </ul>
-                    
-                    </ul>
+
+                    <div class="d-flex justify-content-center">
+                        {{$posts->links()}}
+                    </div>
+
                 @endif
                 
             </div>
