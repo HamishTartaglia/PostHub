@@ -68,6 +68,7 @@
                                     <div class="navbar">
                                         <p class="postedBy">Posted by:
                                             <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a></p>
+                                        <p class="posted">In: <a href = "{{ route('categories.show', ['category' => $post->category->name]) }}" class="user"> {{$post->category->name}}</a></p>
                                         <p class="posted"> Posted: {{ $post->created_at->diffForHumans() }} </p>
                                     </div>
                                 </li>
