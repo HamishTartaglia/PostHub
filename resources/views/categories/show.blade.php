@@ -4,24 +4,27 @@
 
 @section('content')
 
-    <ul>
-        @foreach ($posts as $post)
-            <div>
+    <div class="container">
+        <ul>
+                @foreach ($posts as $post)
+                    <div>
 
-                <li> 
-                    <a href = "{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}"> {{$post->title}} </a> <br>
-                    <a> {{$post->body}} </a><br>
-                    <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a>
-                    <p> Posted: {{ $post->created_at->diffForHumans() }} </p>
-                </li>
+                        <li> 
+                            <a href = "{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}"> {{$post->title}} </a> <br>
+                            <a> {{$post->body}} </a><br>
+                            <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}"> {{$post->profile->username}} </a>
+                            <p> Posted: {{ $post->created_at->diffForHumans() }} </p>
+                        </li>
 
-     
-            </div><br>
-        @endforeach
-    </ul>
+            
+                    </div><br>
+                @endforeach
+            </ul>
 
-    {{$posts->links()}}
+            {{$posts->links()}}
 
-    <a href = "{{ route('post.create', ['category' => $category])}}">Create Post</a>
+            <a href = "{{ route('post.create', ['category' => $category])}}">Create Post</a>
+    </div>
+    
 
 @endsection
