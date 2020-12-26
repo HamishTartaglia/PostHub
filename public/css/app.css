@@ -43,3 +43,8 @@ h5, h6{
     color: #0065bd;
     border: 2px solid #0065bd;
 }
+#sidebar-wrapper{
+    border: 1.5px solid #0065bd;
+    padding: 7px;
+    border-radius: 20px;
+}
