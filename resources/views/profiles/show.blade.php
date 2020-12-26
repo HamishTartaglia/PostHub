@@ -44,12 +44,17 @@
             </div>
 
             <div id="page-content-wrapper">
-                <p>Posts:</p>
-                <ul>
-                    @foreach ($profile->posts as $post)
-                        <li> <a href = "{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}"> {{$post->title}} </a> </li>
-                    @endforeach
-                </ul>
+                @if ($profile->posts->isEmpty())
+                    <p>No posts yet!</p>
+                @else
+                    <p>Posts:</p>
+                    <ul>
+                        @foreach ($profile->posts as $post)
+                            <li> <a href = "{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}"> {{$post->title}} </a> </li>
+                        @endforeach
+                    </ul>
+                @endif
+                
             </div>
         </div>
         
