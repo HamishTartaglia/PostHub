@@ -64,3 +64,16 @@ h5, h6{
 #post-body{
     height: 250px;
 }
+#category-title{
+    border-bottom: 1px solid #0065bd;
+}
+#category{
+    border: 1px solid transparent;
+}
+#category:hover{
+    border: 1px solid #0065bd;
+    cursor: pointer;
+}
+#categories{
+    max-width: 300px;
+}

@@ -3,13 +3,15 @@
 @section('title','Categories')
 
 @section('content')
-
-    <p>All Categories</p>
-    <ul>
+    <div class="container p-4" id="categories">
+        <div class="d-flex justify-content-center" id="category-title">
+            <h5>All Categories</h5>
+        </div>
+        <br>
         @foreach ($categories as $category)
-
-            <li> <a href = "{{ route('categories.show', ['category' => $category]) }}"> {{$category->name}}</li>
-                
+            <div class="d-flex justify-content-center" id="category" onclick="location.href='{{ route('categories.show', ['category' => $category ]) }}'">
+                <h6>{{$category->name}}</h6>
+            </div><br>
         @endforeach
-    </ul>
+    </div>
 @endsection
