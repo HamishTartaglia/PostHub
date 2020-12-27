@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center p-4">
         <div class="col-md-5">
             <div class="create-title">
                 <h5>Reset Password</h5>

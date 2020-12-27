@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center p-4">
         <div class="col-md-5">
             <div class="create-title">
                 <h5>Login</h5>
@@ -18,6 +18,7 @@
                     </span>
                 @enderror
                 <br>
+
                 <h6>Password:</h6>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                 @error('password')
@@ -26,6 +27,7 @@
                     </span>
                 @enderror
                 <br>
+
                 <div class="d-flex justify-content-center">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -36,8 +38,9 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn">
                         {{ __('Login') }}
                     </button>
                 </div>
