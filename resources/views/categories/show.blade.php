@@ -5,9 +5,12 @@
 @section('content')
 
     <div class="container pt-3 px-4">
-        <div class="d-flex justify-content-end">
-            <a href = "{{ route('post.create', ['category' => $category])}}"><button type="button" class="btn">Create Post</button></a>
-        </div>
+        @if (Auth::check())
+            <div class="d-flex justify-content-end">
+                <a href = "{{ route('post.create', ['category' => $category])}}"><button type="button" class="btn">Create Post</button></a>
+            </div>
+        @endif
+        
         <br>
         <ul>
             @foreach ($posts as $post)
