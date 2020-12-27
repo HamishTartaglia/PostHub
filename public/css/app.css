@@ -57,3 +57,10 @@ h5, h6{
 .create-title{
     border-bottom: 1px solid #0065bd;
 }
+#create{
+    width: 1000px;
+    padding: 20px;
+}
+#post-body{
+    height: 250px;
+}
