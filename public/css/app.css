@@ -89,12 +89,12 @@ h5, h6{
     padding: 0px;
     margin: 0px;
 }
-.category-link{
+.category-link, .edit-link, .forgot-password{
     color:#0065bd;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
 }
-.category-link:hover{
+.category-link:hover, .edit-link:hover, .forgot-password:hover{
     color:#0065bd;
     text-decoration: underline;
 }
