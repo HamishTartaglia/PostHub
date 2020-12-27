@@ -54,10 +54,10 @@ h5, h6{
 #page-content-wrapper{
     width: 100%;
 }
-.create-title{
+.create-title, .edit-title{
     border-bottom: 1px solid #0065bd;
 }
-#create{
+#create, #edit{
     width: 1000px;
     padding: 20px;
 }
