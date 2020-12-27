@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container p-4">
 
         <div class="d-flex" id="wrapper">
 
@@ -47,13 +47,14 @@
 
             <div id="page-content-wrapper">
                 @if ($profile->posts->isEmpty())
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center" id="posts-title">
                         <h5>No posts yet!</h5>
                     </div>
                 @else
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center" id="posts-title">
                         <h5>Posts:</h5>
                     </div>
+                    <br>
                     <ul>
 
                         @php

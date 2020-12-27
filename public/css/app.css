@@ -77,3 +77,7 @@ h5, h6{
 #categories{
     max-width: 300px;
 }
+#posts-title{
+    border-bottom: 1px solid #0065bd;
+    margin-left: 30px;
+}
