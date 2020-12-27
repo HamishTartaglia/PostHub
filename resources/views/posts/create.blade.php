@@ -8,7 +8,9 @@
         <form method="POST" action="{{ route('post.store', $category->id)}}">
             @csrf
             <div class="create">
-
+                <div>
+                    <h5>Create a post in {{$category->name}}</h5>
+                </div>
                 <h5>Title: </h5>
                 <textarea type="text" name="title" value="{{ old('title') }} " class="form-control"></textarea>
 
