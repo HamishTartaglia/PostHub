@@ -8,7 +8,7 @@
 
         <div class="d-flex" id="wrapper">
 
-            <div class="border-right" id="sidebar-wrapper">
+            <div class="border-right shadow p-3 mb-5 bg-white" id="sidebar-wrapper">
                 <div class="list-group list-group-flush">
                     <div class="navbar">
                         <h5> {{$profile->username}} </h5>
@@ -17,14 +17,16 @@
                         @endcan
                     </div>
                     
-                    <p>Bio: {{$profile->bio}}</p>
+                    <h6>{{$profile->bio}}</h6>
                     <p>Score: {{$profile->score}}</p>
                     <p>Account created: {{ $profile->created_at->diffForHumans() }} </p>
                     @if (!$profile->posts->isEmpty())
-                        <p>Posted in:<p>
+                        <p id="posted-in">Posted in:<p>
                         <ul>
                             @foreach ($profile->posts->unique('category_id') as $post)
-                                <li><a href = "{{ route('categories.show', ['category' => $post->category]) }}"> {{$post->category->name}} </a> </li>
+                                <a href = "{{ route('categories.show', ['category' => $post->category]) }}" class="category-link"> 
+                                    <p class="categories-posted">{{$post->category->name}} </p>
+                                </a>
                             @endforeach
                         </ul>
                     @endif
@@ -52,7 +54,7 @@
                     </div>
                 @else
                     <div class="d-flex justify-content-center" id="posts-title">
-                        <h5>Posts:</h5>
+                        <h5>Posts by {{$profile->username}}:</h5>
                     </div>
                     <br>
                     <ul>

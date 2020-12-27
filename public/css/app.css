@@ -44,7 +44,7 @@ h5, h6{
     border: 2px solid #0065bd;
 }
 #sidebar-wrapper{
-    border: 1.5px solid #0065bd;
+    border: 2px solid #0065bd;
     padding: 7px;
     border-radius: 20px;
     height: 100%;
@@ -80,4 +80,21 @@ h5, h6{
 #posts-title{
     border-bottom: 1px solid #0065bd;
     margin-left: 30px;
+}
+#posted-in{
+    padding: 0px;
+    margin: 0px;
+}
+.categories-posted{
+    padding: 0px;
+    margin: 0px;
+}
+.category-link{
+    color:#0065bd;
+    text-decoration: none;
+    font-size: 14px;
+}
+.category-link:hover{
+    color:#0065bd;
+    text-decoration: underline;
 }
