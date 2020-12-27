@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::all();
+        $profiles = Profile::simplePaginate(10);
         return(view('profiles.index',['profiles' => $profiles]));
     }
 

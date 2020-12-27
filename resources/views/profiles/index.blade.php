@@ -14,6 +14,10 @@
                 <h6>{{$profile->username}}</h6>
             </div><br>
         @endforeach
+
+        <div class="d-flex justify-content-center">
+            {{$profiles->links()}}
+        </div>
     </div>
 
 @endsection
