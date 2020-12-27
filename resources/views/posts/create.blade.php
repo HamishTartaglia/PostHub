@@ -8,11 +8,12 @@
         <form method="POST" action="{{ route('post.store', $category->id)}}">
             @csrf
             <div class="create">
+
                 <h5>Title: </h5>
-                <input type="text" name="title" value="{{ old('title') }} " class="form-control">
+                <textarea type="text" name="title" value="{{ old('title') }} " class="form-control"></textarea>
 
                 <h5>Body: </h5>
-                <input type="text" name="body" value="{{ old('body') }} " class="form-control">
+                <textarea type="text" name="body" value="{{ old('body') }} " class="form-control"></textarea>
             </div>
             {{--
             <p>Category ID: <input type="text" name="category_id"
