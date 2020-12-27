@@ -34,19 +34,22 @@
                 @endforeach
                 --}}
             <br>
-            <div class="navbar">
-                <a href = "{{ route('categories.show', ['category' => $category ])}}"><button type="button" class="btn">Cancel</button></a>
+
+            <div class="row">
                 <h5>Tags:</h5>
                 @php
                     $tags = App\Tag::get();
                 @endphp
                 @foreach ($tags as $tag)
-                    <div>
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <p>{{$tag->name}}</p>
+                    <div class="col mx-1">
+                        <p><input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        {{$tag->name}}</p>
                     </div>
                 @endforeach
-                
+            </div>
+
+            <div class="navbar">
+                <a href = "{{ route('categories.show', ['category' => $category ])}}"><button type="button" class="btn">Cancel</button></a>
                 <input type="submit" value="Submit" class="btn">
             </div>
             
