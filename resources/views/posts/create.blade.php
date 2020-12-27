@@ -36,8 +36,11 @@
                 @endforeach
                 --}}
             <br>
-            <input type="submit" value="Submit" class="btn">
-            <a href = "{{ route('categories.show', ['category' => $category ])}}">Cancel</a>
+            <div class="navbar">
+                <a href = "{{ route('categories.show', ['category' => $category ])}}"><button type="button" class="btn">Cancel</button></a>
+                <input type="submit" value="Submit" class="btn">
+            </div>
+            
         </form>
     </div>
 @endsection
