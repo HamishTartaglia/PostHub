@@ -7,12 +7,13 @@
     <div class="d-flex justify-content-center">
         <form method="POST" action="{{ route('post.store', $category->id)}}">
             @csrf
-            <p>Title: <input type="text" name="title"
-                value="{{ old('title') }} "></p>
+            <div class="create">
+                <h5>Title: </h5>
+                <input type="text" name="title" value="{{ old('title') }} " class="form-control">
 
-            <p>Body: <input type="text" name="body"
-                value="{{ old('body') }} "></p>
-
+                <h5>Body: </h5>
+                <input type="text" name="body" value="{{ old('body') }} " class="form-control">
+            </div>
             {{--
             <p>Category ID: <input type="text" name="category_id"
                 value="{{ old('category_id') }} "></p>
@@ -31,8 +32,8 @@
                     
                 @endforeach
                 --}}
-
-            <input type="submit" value="Submit">
+            <br>
+            <input type="submit" value="Submit" class="btn">
             <a href = "{{ route('categories.show', ['category' => $category ])}}">Cancel</a>
         </form>
     </div>
