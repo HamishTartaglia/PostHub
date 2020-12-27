@@ -64,17 +64,17 @@ h5, h6{
 #post-body{
     height: 250px;
 }
-#category-title{
+#category-title, #profiles-title{
     border-bottom: 1px solid #0065bd;
 }
-#category{
+#category, #profile{
     border: 1px solid transparent;
 }
-#category:hover{
+#category:hover, #profile:hover{
     border: 1px solid #0065bd;
     cursor: pointer;
 }
-#categories{
+#categories, #profiles{
     max-width: 300px;
 }
 #posts-title{
