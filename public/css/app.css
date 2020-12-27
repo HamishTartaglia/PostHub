@@ -64,7 +64,7 @@ h5, h6{
 #post-body{
     height: 250px;
 }
-#category-title, #profiles-title{
+#category-title, #profiles-title, #posts-title{
     border-bottom: 1px solid #0065bd;
 }
 #category, #profile{
