@@ -3,8 +3,11 @@
 @section('content')
 
     <div class="container p-4">
-        <div class="d-flex justify-content-center" id="posts-title">
-            <h5>{{$category->name}}</h5>
+        <div>
+            <div class="d-flex justify-content-center" id="posts-title">
+                <h5>{{$category->name}}</h5>
+            </div>
+            <br>
 
             @if (Auth::check())
                 <div class="d-flex justify-content-end">
@@ -13,6 +16,7 @@
             @endif
         </div>
         <br>
+        
         <ul>
             @foreach ($posts as $post)
                 <div class="post" onclick="location.href='{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}'">
