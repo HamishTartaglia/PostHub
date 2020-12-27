@@ -7,10 +7,10 @@
     <div class="d-flex justify-content-center">
         <form method="POST" action="{{ route('post.store', $category->id)}}">
             @csrf
-            <div class="create">
-                <div>
+            <div>
+                <div class="create-title">
                     <h5>Create a post in {{$category->name}}</h5>
-                </div>
+                </div><br>
                 <h5>Title: </h5>
                 <textarea type="text" name="title" value="{{ old('title') }} " class="form-control"></textarea>
 
