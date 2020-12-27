@@ -1,16 +1,17 @@
 @extends('layouts.app')
 
-@section('title', $category->name)
-
 @section('content')
 
-    <div class="container pt-3 px-4">
-        @if (Auth::check())
-            <div class="d-flex justify-content-end">
-                <a href = "{{ route('post.create', ['category' => $category])}}"><button type="button" class="btn">Create Post</button></a>
-            </div>
-        @endif
-        
+    <div class="container p-4">
+        <div class="d-flex justify-content-center" id="posts-title">
+            <h5>{{$category->name}}</h5>
+
+            @if (Auth::check())
+                <div class="d-flex justify-content-end">
+                    <a href = "{{ route('post.create', ['category' => $category])}}"><button type="button" class="btn">Create Post</button></a>
+                </div>
+            @endif
+        </div>
         <br>
         <ul>
             @foreach ($posts as $post)
@@ -35,6 +36,5 @@
             {{$posts->links()}}
         </div>
     </div>
-    
 
 @endsection
