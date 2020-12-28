@@ -65,9 +65,13 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
+        $categoryAdmins = $comment->post->category->admins;
+
         if($user->id === $comment->profile_id){
             return true;
         }elseif($user->id === $comment->post->profile_id){
+            return true;
+        }elseif($categoryAdmins->contains('profile_id',$user->id)){
             return true;
         }else{
             return false;
