@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', $post->title)
-
 @section('content')
 
     <ul>
@@ -30,53 +28,27 @@
             <button type="submit">Delete Post</button>
         </form>
     @endcan
-        
-    
 
-    <form method="POST" action="{{ route('comment.store', $post) }}">
-        @csrf
-        <input type="text" name="body"
-            value = "{{ old('body') }}" 
-            placeholder="Comment">
-        <input type="submit" value="Submit">
-    </form>
+    <p>Comments:</p>
 
-    <p>Comments: </p>
-    <ul>
-        @foreach ($post->comments as $comment)
-            
-            <li> {{ $comment->body }}
-                <p> Posted: {{ $comment->created_at->diffForHumans() }} </p>
-
-                @can('update', $comment)
-                    <button><a href="{{ route('comment.edit', ['comment' => $comment]) }}"> Edit</a></button>
-                @endcan
-
-                @can('delete', $comment)
-                    <form action="{{ route('comment.destroy', ['comment' => $comment])}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-                @endcan
-            </li>
-
-        @endforeach
-    
     <div id="comments">
+        <input type="text" v-model="newComment">
+        <button @click="createComment">Submit</button>
         <ul>
             <li v-for="comment in comments">@{{ comment.body }}</li>
         </ul>
+    
     </div>
-
+    
     <script>
         var app = new Vue({
             el: "#comments",
-            data:{
+            data: {
                 comments: [],
+                newComment: ''
             },
             mounted(){
-                axios.get("{{ route('api.comments.index', ['post' => $post]) }}")
+                axios.get("{{ route('api.comments.index', $post) }}")
                 .then( response =>{
                     this.comments = response.data;
                 })
@@ -84,7 +56,23 @@
                     console.log(response)
                 })
             },
+            methods: {
+                createComment: function(){
+                    axios.post("{{ route('api.comments.store', ['post' => $post, 'profile' => Auth::id()]) }}",
+                    {
+                        body:this.newComment
+                    })
+                    .then(response => {
+                        this.comments.push(response.data);
+                        this.newComment = '';
+                    })
+                    .catch(response => {
+                        console.log(response);
+                    })
+                }
+            }
         });
+
     </script>
 
 @endsection

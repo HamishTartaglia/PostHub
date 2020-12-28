@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Post;
-use App\Category;
+use App\Profile;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -50,9 +51,8 @@ class CommentController extends Controller
         $comment->profile_id = Auth::id();
         $comment->post_id = $post->id;
         $comment->save();
-
-        session()->flash('message','Comment posted!');
-        return redirect()->route('posts.show', ['category' => $post->category,'post' => $post->id ]);
+        
+        return redirect()->route('posts.show', ['category' => $post->category,'post' => $post->id ])->with('message','Comment posted!');
     }
 
     /**
@@ -118,13 +118,15 @@ class CommentController extends Controller
         return $comments;
     }
 
-    public function apiStore(Request $request, Post $post)
+    public function apiStore(Request $request, Post $post, $profile)
     {
         // validation
 
+        $profile = Profile::findOrFail($profile);
+        
         $comment = new Comment;
         $comment->body = $request['body'];
-        $comment->profile_id = Auth::id();
+        $comment->profile_id = $profile->id;
         $comment->post_id = $post->id;
         $comment->save();
         return $comment;

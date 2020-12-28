@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('comments/{post}','CommentController@apiIndex')->name('api.comments.index');
 
-Route::post('comments/{post}','CommentController@apiStore')->name('api.comments.store');
+Route::post('comments/{post}/{profile}','CommentController@apiStore')->name('api.comments.store');
