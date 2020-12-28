@@ -20,6 +20,17 @@ class TagSeeder extends Seeder
         $tag2->name="wholesome";
         $tag2->save();
 
-        factory(App\Tag::class, 15)->create();
+        $tag3 = new Tag();
+        $tag3->name="coding";
+        $tag3->save();
+
+        $tag4 = new Tag();
+        $tag4->name="cute";
+        $tag4->save();
+
+        $tag5 = new Tag();
+        $tag5->name="interesting";
+        $tag5->save();
+
     }
 }
