@@ -65,7 +65,13 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        return $user->id === $comment->profile_id;
+        if($user->id === $comment->profile_id){
+            return true;
+        }elseif($user->id === $comment->post->profile_id){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
