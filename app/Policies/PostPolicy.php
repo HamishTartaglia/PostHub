@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Post;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class PostPolicy
 {
@@ -41,7 +42,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+        return Auth::check();
     }
 
     /**

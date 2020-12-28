@@ -25,15 +25,15 @@ Route::get('categories/{category}', 'CategoryController@show')->name('categories
 
 Route::get('posts','PostController@index')->name('posts.index');
 
-Route::get('categories/{category}/create','PostController@create')->name('post.create');
+Route::get('categories/{category}/create','PostController@create')->name('post.create')->middleware('can:create,App\Post');
 
-Route::post('posts/{category}','PostController@store')->name('post.store');
+Route::post('posts/{category}','PostController@store')->name('post.store')->middleware('can:create,App\Post');
 
 Route::get('categories/{category}/{post}', 'PostController@show')->name('posts.show');
 
 Route::get('comments', 'CommentController@index')->name('comments.index');
 
-Route::post('comment/{post}','CommentController@store')->name('comment.store');
+Route::post('comment/{post}','CommentController@store')->name('comment.store')->middleware('can:create,App\Comment');
 
 Route::delete('posts/{post}','PostController@destroy')->name('post.destroy')->middleware('can:delete,post');
 

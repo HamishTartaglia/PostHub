@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Comment;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class CommentPolicy
 {
@@ -41,7 +42,7 @@ class CommentPolicy
      */
     public function create(User $user)
     {
-        //
+        return Auth::check();
     }
 
     /**
