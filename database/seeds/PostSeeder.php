@@ -22,7 +22,7 @@ class PostSeeder extends Seeder
         $post1->tags()->attach(1);
         $post1->tags()->attach(2);
 
-        factory(App\Post::class, 20)->create();
+        factory(App\Post::class, 50)->create();
 
         //assigns each post between 1-3 tags
         foreach(App\Post::all() as $post)
