@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -17,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::simplePaginate(5);
+        $posts = Post::simplePaginate(10);
         return(view('posts.index',['posts' => $posts]));
     }
 
@@ -53,6 +52,15 @@ class PostController extends Controller
         $post->category_id = $category->id;
         $post->save();
 
+        $tags = $request->input('tags');
+        if($tags != null){
+            foreach($tags as $tag){
+            $post->tags()->attach($tag);
+        }
+        }
+        
+        
+        
         return redirect()->route('posts.show', ['category' => $category, 'post' => $post])->with('message','Post created!');
     }
 

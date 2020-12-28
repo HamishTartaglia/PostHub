@@ -12,7 +12,7 @@
                 <h5>Title: </h5>
                 <input type="text" name="title" value="{{ old('title') }} " class="form-control">
                 <br>
-                
+
                 <h5>Body: </h5>
                 <textarea type="text" name="body" value="{{ old('body') }} " class="form-control" id="post-body"></textarea>
             </div>
@@ -41,9 +41,10 @@
                 @php
                     $tags = App\Tag::get();
                 @endphp
+                
                 @foreach ($tags as $tag)
                     <div class="col p-3">
-                        <p><input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <p><input class="form-check-input" type="checkbox" name="tags[]" value={{$tag->id}}>
                         {{$tag->name}}</p>
                     </div>
                 @endforeach
