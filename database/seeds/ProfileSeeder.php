@@ -18,6 +18,6 @@ class ProfileSeeder extends Seeder
         $prof1->user_id=1;
         $prof1->save();
         
-        factory(App\Profile::class, 5)->create();
+        factory(App\Profile::class, 10)->create();
     }
 }
