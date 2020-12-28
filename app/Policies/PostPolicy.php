@@ -65,7 +65,15 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->profile_id;
+        $categoryAdmins = $post->category->admins;
+
+        if($user->id === $post->profile_id){
+            return true;
+        }elseif($categoryAdmins->contains('profile_id',$user->id)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
