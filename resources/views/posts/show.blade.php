@@ -2,20 +2,36 @@
 
 @section('content')
 
-    <ul>
-        <li>{{$post->body}}</li>
-        <li>Score: {{$post->score}}</li>
-        <li>By: <a href = "{{ route('profiles.show', ['profile' => $post->profile]) }}"> {{$post->profile->username}} </a> </li>
-        <li>From: <a href = "{{ route('categories.show', ['category' => $post->category]) }}"> {{$post->category->name}} </a> </li>
-        <li>Tags:
-            <ul>
-                @foreach ($post->tags as $tag)
 
-                    <li>{{$tag->name}} </a> </li>
-     
-                @endforeach
-            </ul>
-    </ul>
+    <div class="container p-4">
+        <div class="d-flex justify-content-center" id="posts-title">
+            <h5>{{$post->title}}</h5>
+            
+        </div>
+        <br>
+
+        <div class="d-flex justify-content-center" id="post-body-text">
+            <h6>{{$post->body}}</h6>   
+        </div>
+
+
+        <div class="navbar" id="post-info">
+            <p class="postedBy">Posted by:
+                <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a></p>
+
+                <p class="posted">
+                    @foreach ($post->tags as $tag) 
+                        
+                        {{$tag->name}} 
+                        
+                    @endforeach
+                </p>
+
+            <p class="posted">Posted: {{ $post->created_at->diffForHumans() }} </p>
+        </div>
+
+
+    </div>
 
     @can('update', $post)
         <button><a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}"> Edit Post </a></button>
@@ -32,8 +48,12 @@
     <p>Comments:</p>
 
     <div id="comments">
-        <input type="text" v-model="newComment">
-        <button @click="createComment">Submit</button>
+        @if (Auth::check())
+            <input type="text" v-model="newComment">
+            <button @click="createComment">Submit</button>
+        @endif
+
+        
         <ul>
             <li v-for="comment in comments">@{{ comment.body }}</li>
         </ul>
@@ -58,17 +78,19 @@
             },
             methods: {
                 createComment: function(){
-                    axios.post("{{ route('api.comments.store', ['post' => $post, 'profile' => Auth::id()]) }}",
-                    {
-                        body:this.newComment
-                    })
-                    .then(response => {
-                        this.comments.push(response.data);
-                        this.newComment = '';
-                    })
-                    .catch(response => {
-                        console.log(response);
-                    })
+                    @if(Auth::check())
+                        axios.post("{{ route('api.comments.store', ['post' => $post, 'profile' => Auth::id()]) }}",
+                        {
+                            body:this.newComment
+                        })
+                        .then(response => {
+                            this.comments.push(response.data);
+                            this.newComment = '';
+                        })
+                        .catch(response => {
+                            console.log(response);
+                        })
+                    @endif
                 }
             }
         });
