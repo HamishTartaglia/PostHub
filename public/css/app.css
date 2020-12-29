@@ -122,3 +122,11 @@ h5, h6{
     padding: 5px;
     margin-top: 15px;
 }
+#admin-sidebar{
+    border: 2px solid #0065bd;
+    padding: 7px;
+    border-radius: 20px;
+    height: 100%;
+    overflow: hidden;
+    min-width: 200px;
+}
