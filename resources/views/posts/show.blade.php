@@ -4,10 +4,24 @@
 
 
     <div class="container p-4">
-        <div class="d-flex justify-content-center" id="posts-title">
+        <div class="navbar"id="posts-title">
+            @can('delete', $post)
+                <form action="{{ route('post.destroy', ['post' => $post]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn">Delete Post</button>
+                </form>
+            @endcan
+
+
             <h5>{{$post->title}}</h5>
+
+            @can('update', $post)
+                <a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}" ><button class="btn"> Edit Post </button></a>
+            @endcan 
             
         </div>
+
         <br>
 
         <div class="d-flex justify-content-center" id="post-body-text">
@@ -17,33 +31,26 @@
 
         <div class="navbar" id="post-info">
             <p class="postedBy">Posted by:
-                <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a></p>
+                <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a>
+            </p>
 
-                <p class="posted">
+            <p class="posted">
+                Tags:
+                @if($post->tags->isEmpty())
+                    None
+                @else
                     @foreach ($post->tags as $tag) 
-                        
                         {{$tag->name}} 
-                        
                     @endforeach
-                </p>
-
+                @endif
+            </p>
             <p class="posted">Posted: {{ $post->created_at->diffForHumans() }} </p>
         </div>
-
-
     </div>
 
-    @can('update', $post)
-        <button><a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}"> Edit Post </a></button>
-    @endcan 
 
-    @can('delete', $post)
-        <form action="{{ route('post.destroy', ['post' => $post]) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Delete Post</button>
-        </form>
-    @endcan
+
+    
 
     <p>Comments:</p>
 
