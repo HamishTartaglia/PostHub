@@ -131,4 +131,11 @@ class CommentController extends Controller
         $comment->save();
         return $comment;
     }
+    
+    public function apiProfile(Comment $comment)
+    {
+        $profile = Profile::where('id', $comment->profile_id)->first(); 
+        $profileName = $profile->username;
+        return $profileName;
+    }
 }

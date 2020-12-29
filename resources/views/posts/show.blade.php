@@ -51,33 +51,39 @@
             </p>
             <p class="posted">Posted: {{ $post->created_at->diffForHumans() }} </p>
         </div>
-    </div>
 
+        <div id="comments">
+            <h6>Comments:</h6>
 
+            @if (Auth::check())
+                <textarea type="text" v-model="newComment" class="form-control" id="comment-text"></textarea>
+                <br>
+                <button @click="createComment" class="btn">Submit</button>
+                <br>
+            @endif
+            <br>
 
-    
-
-    <p>Comments:</p>
-
-    <div id="comments">
-        @if (Auth::check())
-            <input type="text" v-model="newComment">
-            <button @click="createComment">Submit</button>
-        @endif
+            <div v-for="comment in comments" class="comment">
+                <p>@{{ comment.body }}</p>
+                    <div class="navbar">
+                        <p class="posted">Posted By: 
+                        </p>
+                    <p>@{{ comment.created_at }}</p>
+                </div>
+            </div>
+        </div>
 
         
-        <ul>
-            <li v-for="comment in comments">@{{ comment.body }}</li>
-        </ul>
-    
+
     </div>
-    
+
     <script>
         var app = new Vue({
             el: "#comments",
             data: {
                 comments: [],
-                newComment: ''
+                newComment: '',
+                profile: ''
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post) }}")

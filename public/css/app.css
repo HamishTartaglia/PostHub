@@ -98,3 +98,27 @@ h5, h6{
     color:#0065bd;
     text-decoration: underline;
 }
+#post-body-text{
+    padding: 5px;
+    margin-left: 30px;
+    margin-right: auto;
+    overflow-wrap: break-word;
+}
+#post-info{
+    margin-left: 50px;
+    margin-right: 20px;
+    padding-top: 20px;
+}
+#comment-text{
+    height: 80px;
+}
+#comments{
+    margin-left: 30px;
+    max-width: 1250px;
+    word-wrap: break-word;
+}
+.comment{
+    border-bottom: 1px solid #0065bd;
+    padding: 5px;
+    margin-top: 15px;
+}
