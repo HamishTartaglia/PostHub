@@ -7,6 +7,23 @@
 
         
             <div class="border-right shadow p-3 mb-5 bg-white" id="admin-sidebar">
+
+                <h5>Sort:</h5>
+                <ul>
+                    <li class="list-unstyled">
+                        <a href = "{{ route('categories.show.top',['category' => $category])}}"><button class="btn">Top</button></a>
+                    </li>
+                    <br>
+                    <li class="list-unstyled">
+                        <a href = "{{ route('categories.show.newest',['category' => $category])}}"><button class="btn">Newest</button></a>
+                    </li>
+                    <br>
+                    <li class="list-unstyled">
+                        <a href = "{{ route('categories.show.oldest',['category' => $category])}}"><button class="btn">Oldest</button></a>
+                    </li>
+                    <br>
+                </ul>
+                
                 <h5> Admins: </h5>
                 <ul>
                     @foreach ($category->admins as $admin)
