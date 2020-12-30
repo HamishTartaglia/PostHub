@@ -57,10 +57,19 @@
                             <li class="list-unstyled"> 
                                 <h6> {{$post->title}} </h6>
                                 <p class="text-muted">{{ Illuminate\Support\Str::limit($post->body, $limit = 100, $end = '...') }}</p>
-                                <div class="navbar">
-                                    <p class="postedBy">Posted by:
-                                        <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a></p>
-                                    <p class="posted"> Posted: {{ $post->created_at->diffForHumans() }} </p>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="postedBy">Posted by:
+                                            <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a>
+                                        </p>
+                                    </div>
+                                    <div class="col" id="post-info-score">
+                                        <p class="posted">Score: {{ $post->score }}</p>
+                                    </div>
+                                    <div class="col" id="post-info-time">
+                                        <p class="posted"> Posted: {{ $post->created_at->diffForHumans() }} </p>
+                                    </div>
                                 </div>
                             </li>
 

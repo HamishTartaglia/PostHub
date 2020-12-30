@@ -141,3 +141,9 @@ img{
 .empty-button:active, .empty-button:focus{
   outline: none;
 }
+#post-info-score{
+  text-align: center;
+}
+#post-info-time{
+  text-align: end;
+}
