@@ -64,7 +64,7 @@ h5, h6{
 #post-body{
   height: 250px;
 }
-#category-title, #profiles-title, #posts-title{
+#category-title, #profiles-title{
   border-bottom: 1px solid #0065bd;
 }
 #category, #profile{
@@ -146,4 +146,10 @@ img{
 }
 #post-info-time{
   text-align: end;
+}
+#create-btn{
+  margin-bottom: 20px;
+}
+#category-name{
+  margin-top: 10px;
 }

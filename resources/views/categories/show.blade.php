@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container p-4">
+    <div class="container px-4">
         <div class="d-flex" id="wrapper">
 
         
@@ -36,17 +36,18 @@
 
 
             <div id="page-content-wrapper">
-                <div>
-                    <div class="d-flex justify-content-center" id="posts-title">
-                        <h5>{{$category->name}}</h5>
+                <div class="row" id="posts-title">
+                    <div class="col" id="category-name">
+                        <h5 >{{$category->name}}</h5>
                     </div>
-                    <br>
-
-                    @if (Auth::check())
-                        <div class="d-flex justify-content-end">
-                            <a href = "{{ route('post.create', ['category' => $category])}}"><button type="button" class="btn">Create Post</button></a>
-                        </div>
-                    @endif
+                    <div class="col">
+                        @if (Auth::check())
+                            <div class="d-flex justify-content-end">
+                                <a href = "{{ route('post.create', ['category' => $category])}}"><button type="button" class="btn" id="create-btn">Create Post</button></a>
+                            </div>
+                        @endif
+                    </div>
+                    
                 </div>
                 <br>
                 
