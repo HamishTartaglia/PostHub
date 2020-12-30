@@ -131,3 +131,13 @@ img{
   max-height: 500px;
   width: auto;
 }
+.empty-button{
+  outline: none;
+  padding: 5px; 
+  border: 0px; 
+  box-sizing: none; 
+  background-color: transparent;  
+}
+.empty-button:active, .empty-button:focus{
+  outline: none;
+}
