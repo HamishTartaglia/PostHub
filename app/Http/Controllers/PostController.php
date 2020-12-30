@@ -41,6 +41,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'body' => 'required|max:1000',
+            'image' => 'mimes:jpeg,bmp,png'
         ]);
 
         $category = Category::findOrFail($category);
@@ -50,13 +51,19 @@ class PostController extends Controller
         $post->body = $validatedData['body'];
         $post->profile_id = Auth::user()->id;
         $post->category_id = $category->id;
+
+        if ($validatedData['image'] !=null) {
+            $validatedData['image']->store('images','public');
+            $post->image = $validatedData['image']->hashName();
+        }
+
         $post->save();
 
         $tags = $request->input('tags');
         if($tags != null){
             foreach($tags as $tag){
-            $post->tags()->attach($tag);
-        }
+                $post->tags()->attach($tag);
+            }
         }
         
         
