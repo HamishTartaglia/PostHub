@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Event\CommentAdded;
+use App\Events\CommentAdded;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,12 @@ Route::get('profiles','ProfileController@index')->name('profiles.index');
 Route::get('profiles/{profile}', 'ProfileController@show')->name('profiles.show');
 
 Route::get('categories', 'CategoryController@index')->name('categories.index');
+
+Route::get('categories/{category}/newest','CategoryController@newest')->name('categories.show.newest');
+
+Route::get('categories/{category}/oldest','CategoryController@oldest')->name('categories.show.oldest');
+
+Route::get('categories/{category}/top','CategoryController@top')->name('categories.show.top');
 
 Route::get('categories/{category}', 'CategoryController@show')->name('categories.show');
 
@@ -59,6 +65,8 @@ Route::get('logout', 'ProfileController@logout')->name('logout');
 Route::get('profiles/{profile}/edit','ProfileController@edit')->name('profile.edit')->middleware('can:update,profile');
 
 Route::put('profiles/{profile}', 'ProfileController@update')->name('profile.update')->middleware('can:update,profile');
+
+
 
 Route::get('event',function(){
     event(new CommentAdded(Auth::id(),Auth::id()));
