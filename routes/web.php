@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Event\CommentAdded;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,3 +59,7 @@ Route::get('logout', 'ProfileController@logout')->name('logout');
 Route::get('profiles/{profile}/edit','ProfileController@edit')->name('profile.edit')->middleware('can:update,profile');
 
 Route::put('profiles/{profile}', 'ProfileController@update')->name('profile.update')->middleware('can:update,profile');
+
+Route::get('event',function(){
+    event(new CommentAdded("Hi"));
+});
