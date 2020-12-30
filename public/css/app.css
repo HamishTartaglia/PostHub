@@ -1,133 +1,133 @@
 .post{
-    border-bottom: 1px solid #0065bd;
-    border-top: 1px solid transparent;
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-    padding: 5px;
+  border-bottom: 1px solid #0065bd;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  padding: 5px;
 }
 .post:hover{
-    cursor: pointer;
-    border: 1px solid #0065bd;
+  cursor: pointer;
+  border: 1px solid #0065bd;
 }
 .posted{
-    font-size: 12px;
-    color:darkgray;
+  font-size: 12px;
+  color:darkgray;
 }
 html
 {
-    height:101%;
+  height:101%;
 } 
 h5, h6{
-    color:#0065bd;
+  color:#0065bd;
 }
 .user{
-    color:darkgray;
-    text-decoration: none;
-    font-size: 12px;
+  color:darkgray;
+  text-decoration: none;
+  font-size: 12px;
 }
 .user:hover{
-    color:#0065bd;
-    text-decoration: underline;
+  color:#0065bd;
+  text-decoration: underline;
 }
 .postedBy{
-    color:darkgray;
-    font-size: 12px;
+  color:darkgray;
+  font-size: 12px;
 }
 .btn{
-    background-color: #0065bd;
-    color: white;
-    border: 2px solid transparent;
+  background-color: #0065bd;
+  color: white;
+  border: 2px solid transparent;
 }
 .btn:hover{
-    background-color: white;
-    color: #0065bd;
-    border: 2px solid #0065bd;
+  background-color: white;
+  color: #0065bd;
+  border: 2px solid #0065bd;
 }
 #sidebar-wrapper{
-    border: 2px solid #0065bd;
-    padding: 7px;
-    border-radius: 20px;
-    height: 100%;
-    overflow: hidden;
-    min-width: 250px;
+  border: 2px solid #0065bd;
+  padding: 7px;
+  border-radius: 20px;
+  height: 100%;
+  overflow: hidden;
+  min-width: 250px;
 }
 #page-content-wrapper{
-    width: 100%;
+  width: 100%;
 }
 .create-title, .edit-title{
-    border-bottom: 1px solid #0065bd;
+  border-bottom: 1px solid #0065bd;
 }
 #create, #edit{
-    width: 1000px;
-    padding: 20px;
+  width: 1000px;
+  padding: 20px;
 }
 #post-body{
-    height: 250px;
+  height: 250px;
 }
 #category-title, #profiles-title, #posts-title{
-    border-bottom: 1px solid #0065bd;
+  border-bottom: 1px solid #0065bd;
 }
 #category, #profile{
-    border: 1px solid transparent;
+  border: 1px solid transparent;
 }
 #category:hover, #profile:hover{
-    border: 1px solid #0065bd;
-    cursor: pointer;
+  border: 1px solid #0065bd;
+  cursor: pointer;
 }
 #categories, #profiles{
-    max-width: 300px;
+  max-width: 300px;
 }
 #posts-title{
-    border-bottom: 1px solid #0065bd;
-    margin-left: 30px;
+  border-bottom: 1px solid #0065bd;
+  margin-left: 30px;
 }
 #posted-in{
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 .categories-posted, .admin-of{
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 .category-link, .edit-link, .forgot-password{
-    color:#0065bd;
-    text-decoration: none;
-    font-size: 15px;
+  color:#0065bd;
+  text-decoration: none;
+  font-size: 15px;
 }
 .category-link:hover, .edit-link:hover, .forgot-password:hover{
-    color:#0065bd;
-    text-decoration: underline;
+  color:#0065bd;
+  text-decoration: underline;
 }
 #post-body-text{
-    padding: 5px;
-    overflow-wrap: break-word;
+  padding: 5px;
+  overflow-wrap: break-word;
 }
 #post-info{
-    margin-left: 30px;
-    padding-top: 20px;
+  margin-left: 30px;
+  padding-top: 20px;
 }
 #comment-text{
-    height: 80px;
+  height: 80px;
 }
 #comments{
-    margin-left: 30px;
-    max-width: 1250px;
-    word-wrap: break-word;
+  margin-left: 30px;
+  max-width: 1250px;
+  word-wrap: break-word;
 }
 .comment{
-    border-bottom: 1px solid #0065bd;
-    padding: 5px;
-    margin-top: 15px;
+  border-bottom: 1px solid #0065bd;
+  padding: 5px;
+  margin-top: 15px;
 }
 #admin-sidebar{
-    border: 2px solid #0065bd;
-    padding: 7px;
-    border-radius: 20px;
-    height: 100%;
-    overflow: hidden;
-    min-width: 200px;
+  border: 2px solid #0065bd;
+  padding: 7px;
+  border-radius: 20px;
+  height: 100%;
+  overflow: hidden;
+  min-width: 200px;
 }
 img{
-    max-height: 500px;
-    width: auto;
+  max-height: 500px;
+  width: auto;
 }
