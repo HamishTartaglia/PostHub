@@ -100,13 +100,10 @@ h5, h6{
 }
 #post-body-text{
     padding: 5px;
-    margin-left: 30px;
-    margin-right: auto;
     overflow-wrap: break-word;
 }
 #post-info{
-    margin-left: 50px;
-    margin-right: 20px;
+    margin-left: 30px;
     padding-top: 20px;
 }
 #comment-text{
@@ -129,4 +126,8 @@ h5, h6{
     height: 100%;
     overflow: hidden;
     min-width: 200px;
+}
+img{
+    max-height: 500px;
+    width: auto;
 }

@@ -30,7 +30,12 @@
         <br>
 
         <div class="d-flex justify-content-center" id="post-body-text">
-            <h6>{{$post->body}}</h6>   
+            <h6>{{$post->body}}</h6>       
+        </div>
+        <div class="d-flex justify-content-center">
+            @if (isset($post->image)) 
+                <img src ="{{ asset('images/'.$post->image )}}">
+            @endif
         </div>
 
 
@@ -62,15 +67,19 @@
                 <br>
             @endif
             <br>
-
-            <div v-for="comment in comments" class="comment">
-                <p>@{{ comment.body }}</p>
+            @if ($post->comments->isEmpty())
+                <p>No Comments Yet!</p>
+            @else
+                <div v-for="comment in comments" class="comment">
+               
+                   <p>@{{ comment.body }}</p>
                     <div class="navbar">
                         <p class="posted">Posted By: 
                         </p>
-                    <p>@{{ comment.created_at }}</p>
+                        <p>@{{ comment.created_at }}</p>
+                    </div> 
                 </div>
-            </div>
+            @endif
         </div>
 
         
@@ -83,7 +92,6 @@
             data: {
                 comments: [],
                 newComment: '',
-                profile: ''
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post) }}")
