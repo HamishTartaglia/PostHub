@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->integer('score');
             $table->string('title',100);
             $table->string('body',1000);
+            $table->string('image')->nullable();
 
             $table->foreignId('profile_id');
             $table->foreignId('category_id');
