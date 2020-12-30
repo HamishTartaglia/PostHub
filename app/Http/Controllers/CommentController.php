@@ -131,6 +131,9 @@ class CommentController extends Controller
         $comment->post_id = $post->id;
         $comment->save();
 
+        $post->score = $post->score + 10;
+        $post->save();
+
         $profile->score = $profile->score + 10;
         $profile->save();
 

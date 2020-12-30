@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = ['title', 'body','image'];
-    protected $attributes = ['score'=>0];
+    protected $attributes = ['score'=>10];
 
     public function profile()
     {
