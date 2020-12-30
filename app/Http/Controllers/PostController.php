@@ -66,7 +66,9 @@ class PostController extends Controller
             }
         }
         
-        
+        $profile = $post->profile;
+        $profile->score = $profile->score + 10;
+        $profile->save();
         
         return redirect()->route('posts.show', ['category' => $category, 'post' => $post])->with('message','Post created!');
     }
@@ -123,6 +125,11 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $category = $post->category;
+
+        $profile = $post->profile;
+        $profile->score = $profile->score - 10;
+        $profile->save();
+
         $post->delete();
 
         return redirect()->route('categories.show',['category' => $category])->with('message','Post Deleted!');
