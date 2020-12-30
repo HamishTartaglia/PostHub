@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="d-flex justify-content-center">
-        <form method="POST" action="{{ route('post.store', $category->id)}}" id="create">
+        <form method="POST" action="{{ route('post.store', $category->id)}}" id="create" enctype="multipart/form-data">
             @csrf
             <div>
                 <div class="create-title">
@@ -15,6 +15,11 @@
 
                 <h5>Body: </h5>
                 <textarea type="text" name="body" value="{{ old('body') }} " class="form-control" id="post-body"></textarea>
+                <br>
+
+                <h5>Image:</h5>
+                <input id="image" type="file" class="form-control" name="image">
+
             </div>
             {{--
             <p>Category ID: <input type="text" name="category_id"
