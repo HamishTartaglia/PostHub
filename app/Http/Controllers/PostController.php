@@ -52,7 +52,7 @@ class PostController extends Controller
         $post->profile_id = Auth::user()->id;
         $post->category_id = $category->id;
 
-        if ($validatedData['image'] !=null) {
+        if ($request->hasFile('image')) {
             $validatedData['image']->store('images','public');
             $post->image = $validatedData['image']->hashName();
         }
