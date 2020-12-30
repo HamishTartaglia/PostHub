@@ -26,6 +26,6 @@ class CommentAddedListener
      */
     public function handle(CommentAdded $event)
     {
-        dd($event);
+        return $event;
     }
 }

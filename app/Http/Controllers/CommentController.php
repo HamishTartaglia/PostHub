@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Event\CommentAdded;
 use App\Post;
 use App\Profile;
 use App\User;
@@ -129,6 +130,9 @@ class CommentController extends Controller
         $comment->profile_id = $profile->id;
         $comment->post_id = $post->id;
         $comment->save();
+
+        event(new CommentAdded($comment->profile_id,$post->profile_id));
+
         return $comment;
     }
     
