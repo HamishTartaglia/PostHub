@@ -9,22 +9,29 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Profile;
 
 class CommentAdded implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
+    public $postUser;
     public $message;
+    public $commentUser;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($commentUser,$postUser)
     {
-        $this->message = $message;
+        $postUser = Profile::findOrFail($postUser);
+        $commentUser = Profile::findOrFail($commentUser);
+
+        $this->postUser = $postUser;
+        $this->commentUser = $commentUser;
+        $this->message = "{$commentUser->username} posted a comment on your post";
     }
 
     /**
@@ -34,6 +41,6 @@ class CommentAdded implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('user.'.$this->user->id);
+        return new PrivateChannel('user.'.$this->postUser->id);
     }
 }

@@ -61,5 +61,5 @@ Route::get('profiles/{profile}/edit','ProfileController@edit')->name('profile.ed
 Route::put('profiles/{profile}', 'ProfileController@update')->name('profile.update')->middleware('can:update,profile');
 
 Route::get('event',function(){
-    event(new CommentAdded("Hi"));
+    event(new CommentAdded(Auth::id(),Auth::id()));
 });
