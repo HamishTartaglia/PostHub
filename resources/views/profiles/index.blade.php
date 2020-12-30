@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title','Profiles')
-
 @section('content')
 
     <div class="container p-4" id="profiles">

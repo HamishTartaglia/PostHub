@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title','Edit Comment')
-
 @section('content')
 
         <form method="POST" action="{{ route('comment.update', ['comment' => $comment])}}">

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container p-4">
+    <div class="container px-4">
 
         <div class="d-flex" id="wrapper">
 
@@ -68,8 +68,8 @@
                         <h5>No posts yet!</h5>
                     </div>
                 @else
-                    <div class="d-flex justify-content-center" id="posts-title">
-                        <h5>Posts by {{$profile->username}}:</h5>
+                    <div id="posts-title">
+                        <h5 id="username">Posts by {{$profile->username}}:</h5>
                     </div>
                     <br>
                     <ul>

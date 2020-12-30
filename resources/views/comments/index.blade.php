@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title','Comments')
-
 @section('content')
 
     <p>All comments</p>

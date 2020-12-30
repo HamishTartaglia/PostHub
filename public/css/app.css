@@ -99,7 +99,7 @@ h5, h6{
   text-decoration: underline;
 }
 #post-body-text{
-  padding: 5px;
+  padding-left: 30px;
   overflow-wrap: break-word;
 }
 #post-info{
@@ -141,15 +141,21 @@ img{
 .empty-button:active, .empty-button:focus{
   outline: none;
 }
-#post-info-score{
+#post-info-score, #post-title-col{
   text-align: center;
 }
-#post-info-time{
+#post-info-time, #edit-post{
   text-align: end;
 }
-#create-btn{
+#create-btn, #delete-post-btn{
   margin-bottom: 20px;
 }
-#category-name{
+#category-name,#post-title-col{
   margin-top: 10px;
+}
+#delete-post, #post-title-col,#edit-post-col{
+  padding: 0;
+}
+#username{
+  margin-bottom: 20px;
 }

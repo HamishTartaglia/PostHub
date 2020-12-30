@@ -3,28 +3,32 @@
 @section('content')
 
 
-    <div class="container p-4">
-        <div class="navbar"id="posts-title">
-            @can('delete', $post)
-                <form action="{{ route('post.destroy', ['post' => $post]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn">Delete Post</button>
-                </form>
-            @endcan
-
-
-            <h5>{{$post->title}}</h5>
-
-            @can('update', $post)
-                <a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}" >
-                    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                        </svg>
-                    </h5>    
-                </a>
-            @endcan 
+    <div class="container px-4">
+        <div class="row"id="posts-title">
+            <div class="col" id="delete-post">
+                @can('delete', $post)
+                    <form action="{{ route('post.destroy', ['post' => $post]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn" id="delete-post-btn">Delete Post</button>
+                    </form>
+                @endcan
+            </div>
             
+            <div class="col" id="post-title-col">
+                <h5>{{$post->title}}</h5>
+            </div>
+
+            <div class="col" id="edit-post">
+                @can('update', $post)
+                    <a href="{{ route('post.edit', ['category' => $post->category,'post' => $post]) }}" >
+                        <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg>
+                        </h5>    
+                    </a>
+                @endcan 
+            </div>             
         </div>
 
         <br>
@@ -65,7 +69,7 @@
                 <br>
                 <button @click="createComment" class="btn">Submit</button>
                 <br>
-            @endif
+            @endif  
             <br>
             @if ($post->comments->isEmpty())
                 <p>No Comments Yet!</p>
@@ -75,6 +79,12 @@
                    <p>@{{ comment.body }}</p>
                     <div class="navbar">
                         <p class="posted">Posted By: 
+                            
+                            <!--
+                                @{{getProfile(comment.id)}}
+                            <div v-for="profile in profiles" v-if="profile.id === comment.id">
+                                <p>@{{profile.username}}</p>
+                            </div>-->
                         </p>
                         <p>@{{ comment.created_at }}</p>
                     </div> 
@@ -92,6 +102,7 @@
             data: {
                 comments: [],
                 newComment: '',
+                profiles: []
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post) }}")

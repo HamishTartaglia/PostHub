@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
-@section('title','Edit Post')
-    
 @section('content')
 
     <div class="d-flex justify-content-center">
-        <form method="POST" action="{{ route('post.update', ['category' => $category,'post' => $post])}}" id="create">
+        <form method="POST" action="{{ route('post.update', ['category' => $category,'post' => $post])}}" id="edit">
             @csrf
             @method('PUT')
-            <div class="create-title">
+            <div class="edit-title">
                 <h5>Edit your post</h5>
             </div><br>
             

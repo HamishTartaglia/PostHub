@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title','Categories')
-
 @section('content')
     <div class="container p-4" id="categories">
         <div class="d-flex justify-content-center" id="category-title">

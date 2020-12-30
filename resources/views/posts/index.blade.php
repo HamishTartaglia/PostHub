@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title','Posts')
-
 @section('content')
 
     <div class="container p-4">
@@ -20,7 +18,7 @@
                             <p class="postedBy">Posted by:
                                 <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a></p>
                             <p class="posted">In: <a href = "{{ route('categories.show', ['category' => $post->category->name]) }}" class="user"> {{$post->category->name}}</a></p>
-                            <p class="posted"> Posted: {{ $post->created_at->diffForHumans() }} </p>
+                            <p class="posted">Posted: {{ $post->created_at->diffForHumans() }} </p>
                         </div>
                     </li>
 
@@ -28,10 +26,9 @@
                 </div><br>
             @endforeach
         </ul>
-
-            <div class="d-flex justify-content-center">
-                {{$posts->links()}}
-            </div>
+        <div class="d-flex justify-content-center">
+            {{$posts->links()}}
+        </div>
     </div>
 
 @endsection
