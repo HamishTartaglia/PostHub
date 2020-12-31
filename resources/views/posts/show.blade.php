@@ -36,34 +36,47 @@
         <div class="d-flex justify-content-center" id="post-body-text">
             <h6>{{$post->body}}</h6>       
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" id="post-pic">
             @if (isset($post->photo)) 
-            @php
-                $filename = $post->photo->filename;
-                $filename = ltrim($filename, 'public');
-               
-            @endphp 
+                @php
+                    $filename = $post->photo->filename;
+                    $filename = ltrim($filename, 'public');
+                @endphp 
                 <img src ="{{ asset($filename)}}">
             @endif
         </div>
 
 
-        <div class="navbar" id="post-info">
-            <p class="postedBy">Posted by:
-                <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a>
-            </p>
+        <div class="row" id="post-info">
+            <div class="col">
+                <p class="postedBy">Posted by:
+                    <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a>
+                </p>
+            </div>
+            <div class="col">
+                <p class="posted">
+                    Tags:
+                    @if($post->tags->isEmpty())
+                        None
+                    @else
+                        @foreach ($post->tags as $tag) 
+                            {{$tag->name}} 
+                        @endforeach
+                    @endif
+                </p>
+            </div>
+            <div class="col">
+                <p class="posted">Score: {{ $post->score }} </p>
+            </div>
+            <div class="col">
+                <p class="posted">Posted: {{ $post->created_at->diffForHumans() }} </p>
+            </div>
+        </div>
+        <div class="navbar" >
+            
 
-            <p class="posted">
-                Tags:
-                @if($post->tags->isEmpty())
-                    None
-                @else
-                    @foreach ($post->tags as $tag) 
-                        {{$tag->name}} 
-                    @endforeach
-                @endif
-            </p>
-            <p class="posted">Posted: {{ $post->created_at->diffForHumans() }} </p>
+            
+            
         </div>
 
         <div id="comments">
