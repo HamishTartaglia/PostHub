@@ -48,6 +48,8 @@ Route::delete('comments/{comment}','CommentController@destroy')->name('comment.d
 
 Route::delete('profiles/{profile}','ProfileController@destroy')->name('profile.destroy')->middleware('can:delete,profile');
 
+Route::delete('photo/{photo}','PhotoController@destroy')->name('photo.destroy');
+
 Route::get('categories/{category}/{post}/edit','PostController@edit')->name('post.edit')->middleware('can:update,post');
 
 Route::put('categories/{category}/{post}', 'PostController@update')->name('post.update')->middleware('can:update,post');
