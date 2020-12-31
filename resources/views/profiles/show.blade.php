@@ -89,7 +89,7 @@
                 </div>                    
             </div>
 
-            <div id="page-content-wrapper">
+            <div id="page-content-wrapper" class="border-right shadow p-3 ms-4 bg-white">
                 @if ($profile->posts->isEmpty())
                     <div class="d-flex justify-content-center" id="posts-title">
                         <h5>No posts yet!</h5>

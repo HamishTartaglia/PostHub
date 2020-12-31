@@ -120,7 +120,7 @@ h5, h6{
   padding: 5px;
   margin-top: 15px;
 }
-#admin-sidebar{
+#admin-sidebar,#page-content-wrapper{
   border: 2px solid #0065bd;
   padding: 7px;
   border-radius: 20px;
@@ -173,4 +173,7 @@ img{
 #med-img{
   width: 160px;
   height: 160px;
+}
+#edit-post{
+  margin-top: 10px;
 }

@@ -35,7 +35,7 @@
             </div>
 
 
-            <div id="page-content-wrapper">
+            <div id="page-content-wrapper" class="border-right shadow p-3 ms-4 bg-white">
                 <div class="row" id="posts-title">
                     <div class="col" id="category-name">
                         <h5 >{{$category->name}}</h5>
