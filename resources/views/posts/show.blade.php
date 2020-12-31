@@ -72,12 +72,6 @@
                 <p class="posted">Posted: {{ $post->created_at->diffForHumans() }} </p>
             </div>
         </div>
-        <div class="navbar" >
-            
-
-            
-            
-        </div>
 
         <div id="comments">
             <h6>Comments:</h6>
@@ -92,21 +86,23 @@
             @if ($post->comments->isEmpty())
                 <p>No Comments Yet!</p>
             @else
-                <div v-for="comment in comments" class="comment">
-               
-                   <p>@{{ comment.body }}</p>
-                    <div class="navbar">
-                        <p class="posted">Posted By: 
-                            
-                            <!--
-                                @{{getProfile(comment.id)}}
-                            <div v-for="profile in profiles" v-if="profile.id === comment.id">
-                                <p>@{{profile.username}}</p>
-                            </div>-->
-                        </p>
-                        <p>@{{ comment.created_at }}</p>
-                    </div> 
+                <div class="row">
+                    <div class="col">
+                        <div v-for="comment in comments" class="comment">  
+                            <p>@{{ comment.body }}</p>
+                            <div class="navbar">
+                                <div v-for="profile in profiles" v-if="profile.id === comment.id">
+                                    <p class="posted">Posted By: 
+                                        @{{profile.username}}</p>
+                                </div>
+                                
+                                <p>@{{ comment.created_at }}</p>
+                            </div> 
+                        </div>
+                    </div>
+                    
                 </div>
+                
             @endif
         </div>
 
@@ -120,12 +116,13 @@
             data: {
                 comments: [],
                 newComment: '',
-                profiles: []
+                profiles: [],
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post) }}")
                 .then( response =>{
                     this.comments = response.data;
+                    this.getProfiles(this.comments[0].post_id);
                 })
                 .catch(response => {
                     console.log(response)
@@ -147,14 +144,11 @@
                         })
                     @endif
                 },
-                getProfile: function(id){
+                getProfiles: function(id){
                     //PUT IN MOUNTED!!!
                 axios.get('https://posthub.test/api/comment/' + id)
                     .then(response =>{
-                        profile = {"id": id, "username" : response.data} 
-                        this.profiles.push(profile)
-                        console.log(profile.id);
-                        console.log(profile.username);
+                        this.profiles = response.data;
                     })
                     .catch(response => {
                         console.log(response)
