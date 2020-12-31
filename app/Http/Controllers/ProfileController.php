@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use App\User;
+use App\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,10 +75,28 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'bio' => 'required|max:50',
+            'image' => ''
         ]);
 
         $profile->bio = $validatedData['bio'];
         $profile->save();
+
+        if ($request->hasFile('image')) {
+            $validatedData['image']->store('images','public');
+
+            if($profile->photo == null){
+                $photo = new Photo;
+                $photo->filename = "public/images/".$validatedData['image']->hashName();
+                $photo->photoable_type = Profile::class;
+                $photo->photoable_id = $profile->id;
+                $photo->save();
+            }else{
+                $photo = $profile->photo;
+            $photo->filename = "public/images/".$validatedData['image']->hashName();
+            $photo->photoable_type = Profile::class;
+            $photo->save();
+            }            
+        }
 
         return redirect()->route('profiles.show', ['profile' => $profile])->with('message','Profile Updated!');
     }
