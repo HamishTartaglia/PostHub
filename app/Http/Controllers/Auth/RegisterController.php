@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Profile;
+use App\Photo;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -54,8 +55,9 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:20','unique:profiles', 'alpha_dash'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'bio' => ['required','string', 'max:50']
-        ]);
+            'bio' => ['required','string', 'max:50'],
+            'image' => [],
+            ]);
     }
 
     /**
@@ -76,6 +78,15 @@ class RegisterController extends Controller
         $profile->bio = $data['bio'];
         $profile->user_id = $user->id;
         $profile->save();
+
+        if ($data['image'] != null) {
+            $data['image']->store('images','public');
+            $photo = new Photo;
+            $photo->filename = "public/images/".$data['image']->hashName();
+            $photo->photoable_id = $profile->id;
+            $photo->photoable_type = Profile::class;
+            $photo->save();
+        }
 
         return $user;
     }
