@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Photo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -51,13 +52,16 @@ class PostController extends Controller
         $post->body = $validatedData['body'];
         $post->profile_id = Auth::user()->id;
         $post->category_id = $category->id;
+        $post->save();
 
         if ($request->hasFile('image')) {
             $validatedData['image']->store('images','public');
-            $post->image = $validatedData['image']->hashName();
+            $photo = new Photo;
+            $photo->filename = "public/images/".$validatedData['image']->hashName();
+            $photo->photoable_id = $post->id;
+            $photo->photoable_type = Post::class;
+            $photo->save();
         }
-
-        $post->save();
 
         $tags = $request->input('tags');
         if($tags != null){
