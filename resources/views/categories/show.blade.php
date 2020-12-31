@@ -62,8 +62,12 @@
                                         <p class="text-muted">{{ Illuminate\Support\Str::limit($post->body, $limit = 100, $end = '...') }}</p>
                                     </div>
                                     <div class="col" id="img-preview">
-                                        @if (isset($post->image)) 
-                                            <img src ="{{ asset('images/'.$post->image )}}" id="small-img">
+                                        @if (isset($post->photo)) 
+                                            @php
+                                                $filename = $post->photo->filename;
+                                                $filename = ltrim($filename, 'public');
+                                            @endphp 
+                                            <img src ="{{ asset($filename)}}" id="small-img">
                                         @endif
                                     </div>
                                     

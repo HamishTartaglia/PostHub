@@ -37,8 +37,13 @@
             <h6>{{$post->body}}</h6>       
         </div>
         <div class="d-flex justify-content-center">
-            @if (isset($post->image)) 
-                <img src ="{{ asset('images/'.$post->image )}}">
+            @if (isset($post->photo)) 
+            @php
+                $filename = $post->photo->filename;
+                $filename = ltrim($filename, 'public');
+               
+            @endphp 
+                <img src ="{{ asset($filename)}}">
             @endif
         </div>
 
@@ -128,6 +133,19 @@
                             console.log(response);
                         })
                     @endif
+                },
+                getProfile: function(id){
+                    //PUT IN MOUNTED!!!
+                axios.get('https://posthub.test/api/comment/' + id)
+                    .then(response =>{
+                        profile = {"id": id, "username" : response.data} 
+                        this.profiles.push(profile)
+                        console.log(profile.id);
+                        console.log(profile.username);
+                    })
+                    .catch(response => {
+                        console.log(response)
+                    })
                 }
             }
         });
