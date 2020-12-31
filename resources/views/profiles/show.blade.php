@@ -108,8 +108,23 @@
                         @foreach ($posts as $post)
                             <div class="post" onclick="location.href='{{ route('posts.show', ['category' => $post->category,'post' => $post->id ]) }}'">
                                 <li class="list-unstyled"> 
-                                    <h6> {{$post->title}} </h6>
-                                    <p class="text-muted">{{ Illuminate\Support\Str::limit($post->body, $limit = 100, $end = '...') }}</p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6> {{$post->title}} </h6>
+                                            <p class="text-muted">{{ Illuminate\Support\Str::limit($post->body, $limit = 100, $end = '...') }}</p>
+                                        </div>
+                                        <div class="col" id="img-preview">
+                                            @if (isset($post->photo)) 
+                                                @php
+                                                    $filename = $post->photo->filename;
+                                                    $filename = ltrim($filename, 'public');
+                                                @endphp 
+                                                <img src ="{{ asset($filename)}}" id="small-img">
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    
                                     <div class="navbar">
                                         <p class="postedBy">Posted by:
                                             <a href = "{{ route('profiles.show', ['profile' => $post->profile->username]) }}" class="user"> {{$post->profile->username}} </a></p>
