@@ -33,4 +33,9 @@ class Profile extends Model
     {
         return 'username';
     }
+
+    public function photo()
+    {
+        return $this->morphOne('App\Photo', 'photoable');
+    }
 }
