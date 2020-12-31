@@ -88,13 +88,13 @@ class CategoryController extends Controller
 
     public function newest(Category $category)
     {
-        $posts = Post::where('category_id', $category->id)->orderBy('created_at', 'ASC')->simplePaginate(10);
+        $posts = Post::where('category_id', $category->id)->orderBy('created_at', 'DESC')->simplePaginate(10);
         return view('categories.show', ['category' => $category], compact('posts'));
     }
 
     public function oldest(Category $category)
     {
-        $posts = Post::where('category_id', $category->id)->orderBy('created_at', 'DESC')->simplePaginate(10);
+        $posts = Post::where('category_id', $category->id)->orderBy('created_at', 'ASC')->simplePaginate(10);
         return view('categories.show', ['category' => $category], compact('posts'));
     }
 
