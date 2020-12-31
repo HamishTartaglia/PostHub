@@ -166,3 +166,10 @@ img{
 #img-preview{
   text-align: end;
 }
+#post-pic{
+  padding-left: 30px;
+}
+#med-img{
+  width: 100px;
+  height: 100px;
+}

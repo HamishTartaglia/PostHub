@@ -7,6 +7,13 @@
         <div class="d-flex" id="wrapper">
 
             <div class="border-right shadow p-3 mb-5 bg-white" id="sidebar-wrapper">
+                @if (isset($profile->photo)) 
+                    @php
+                        $filename = $profile->photo->filename;
+                        $filename = ltrim($filename, 'public');
+                    @endphp 
+                    <img src ="{{ asset($filename)}}" id="med-img">
+                @endif
                 <div class="navbar">
                     <h5> {{$profile->username}} </h5>
                     @can('update', $profile)
