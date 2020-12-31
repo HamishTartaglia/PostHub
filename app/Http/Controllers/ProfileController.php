@@ -75,7 +75,7 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'bio' => 'required|max:50',
-            'image' => ''
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $profile->bio = $validatedData['bio'];

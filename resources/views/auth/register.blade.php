@@ -60,7 +60,7 @@
                             
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary">
-                        {{ __('Login') }}
+                        {{ __('Register') }}
                     </button>
                 </div>
                 <br>

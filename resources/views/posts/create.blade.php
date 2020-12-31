@@ -10,15 +10,32 @@
                     <h5>Create a post in {{$category->name}}</h5>
                 </div><br>
                 <h5>Title: </h5>
-                <input type="text" name="title" value="{{ old('title') }} " class="form-control">
+                <input type="text" name="title" value="{{ old('title') }} " class="form-control" @error('title') is-invalid @enderror required>
                 <br>
+                @error('title')
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
 
                 <h5>Body: </h5>
-                <textarea type="text" name="body" value="{{ old('body') }} " class="form-control" id="post-body"></textarea>
+                <textarea type="text" name="body" class="form-control" id="post-body" @error('body') is-invalid @enderror required>{{ old('body') }}</textarea>
                 <br>
+                @error('body')
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+                
 
                 <h5>Image:</h5>
                 <input id="image" type="file" class="form-control" name="image">
+                <br>
+                @error('image')
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
 
             </div>
             {{--
