@@ -145,7 +145,7 @@ img{
 #post-info-score, #post-title-col{
   text-align: center;
 }
-#post-info-time, #edit-post{
+#post-info-time, #edit-post, #edit-comm,#created-comm{
   text-align: end;
 }
 #create-btn, #delete-post-btn{
@@ -176,4 +176,8 @@ img{
 }
 #edit-post{
   margin-top: 10px;
+}
+#messages{
+  padding-left: 10px;
+  text-align: center;
 }
