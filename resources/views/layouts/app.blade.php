@@ -40,6 +40,8 @@
                         <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/Gaming') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Gaming' ]) }}"> Gaming </a></li>
                         <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/AskAnything') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'AskAnything' ]) }}"> AskAnything </a></li>
                         <li class="nav-item px-4"><a class="nav-link {{ request()->is('categories/Misc') ? 'active' : '' }}" href="{{ route('categories.show', ['category' => 'Misc' ]) }}"> Misc </a></li>
+                        <li class="nav-item px-4"><a class="nav-link {{ request()->is('posts/nasa') ? 'active' : '' }}" href="{{ route('nasa.show')}}"> APOD </a></li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
