@@ -181,3 +181,14 @@ img{
   padding-left: 10px;
   text-align: center;
 }
+#del-comment{
+  max-width: 30px;
+  padding: 0;
+}
+#edit-comment{
+  width: 20px;
+  padding: 0;
+}
+#delete-comment{
+  margin-bottom: 5px;
+}
