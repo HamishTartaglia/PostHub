@@ -160,7 +160,6 @@
                 comments: [],
                 newComment: '',
                 profiles: [],
-                link: '',
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post) }}")
@@ -207,8 +206,14 @@
                 deleteComment: function(comment){
                     axios.delete('https://posthub.test/api/comment/' + comment)
                     .then(response =>{
-                        const idx = this.comments.indexOf(comment)
-                        this.comments.splice(idx, 1)
+                        axios.get("{{ route('api.comments.index', $post) }}")
+                        .then( response =>{
+                            this.comments = response.data;
+                            this.getProfiles(this.comments[0].post_id);
+                        })
+                        .catch(response => {
+                            console.log(response)
+                        })
                     })
                     .catch(response => {
                         console.log(response);
