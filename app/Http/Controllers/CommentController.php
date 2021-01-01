@@ -142,10 +142,22 @@ class CommentController extends Controller
         return $comment;
     }
     
-    public function apiProfile(Comment $comment)
+    public function apiProfile(Post $post)
     {
-        $profile = Profile::where('id', $comment->profile_id)->first(); 
-        $profileName = $profile->username;
-        return $profileName;
+        $profiles = [];
+        foreach($post->comments as $comment){
+            $profiles[] = [
+                'id' => $comment->id,
+                'username' => $comment->profile->username,
+                'profile_id' => $comment->profile_id,
+            ];
+        }
+        return response()->json($profiles);
+    }
+
+    public function apiDestroy(Comment $comment)
+    {
+        $comment->delete();
+        return true;
     }
 }
