@@ -11,6 +11,7 @@ class NasaPicture
     private $author;
     private $description;
     private $date;
+    private $title;
 
     public function __construct($apiKey) 
     {
@@ -38,6 +39,9 @@ class NasaPicture
 
         $date = $decode->date;
         $this->date = $date;
+
+        $title = $decode->title;
+        $this->title = $title;
     }
 
     public function getPhoto()
@@ -58,5 +62,10 @@ class NasaPicture
     public function getDate()
     {
         return $this->date;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

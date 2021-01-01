@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\NasaPicture;
 use App\Post;
 use App\Photo;
 use Illuminate\Support\Facades\Auth;
@@ -137,5 +138,16 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('categories.show',['category' => $category])->with('message','Post Deleted!');
+    }
+
+    public function nasaAPOD(NasaPicture $nasa)
+    {
+        $photo = $nasa->getPhoto();
+        $author = $nasa->getAuthor();
+        $description = $nasa->getDescription();
+        $date = $nasa->getDate();
+        $title = $nasa->getTitle();
+
+        return(view('posts.nasa',compact('photo','author','description','date','title')));
     }
 }
