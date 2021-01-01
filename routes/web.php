@@ -14,6 +14,12 @@ use App\Events\CommentAdded;
 |
 */
 
+use App\NasaPicture;
+
+app()->singleton('nasa', function($app){
+    return new NasaPicture("2UKdbcSE5xgIKSiejLXXoYdWO9vMrTuC3W8iC7Xv");
+});
+
 Route::get('/', 'PostController@index');
 
 Route::get('profiles','ProfileController@index')->name('profiles.index');
