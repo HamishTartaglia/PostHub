@@ -30,8 +30,13 @@
                         <p> <a href="{{route('profiles.show',['profile' => $admin->profile])}}" class="category-link"> {{$admin->profile->username}} </a></p>
                     @endforeach
                 </ul>   
-
-
+                <br>
+                @php
+                    $randomId = App\Post::inRandomOrder()->first();
+                @endphp
+                <li class="list-unstyled">
+                    <a href = "{{ route('posts.show',['category'=>$category,'post' => $randomId])}}"><button class="btn">Random Post</button></a>
+                </li>
             </div>
 
 
