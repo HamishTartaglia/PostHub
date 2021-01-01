@@ -156,6 +156,11 @@
             @endif
         </div>
     </div>
+    <div>
+        <a href="#app">
+            <button class="btn" id="back-to-top">Back to top</button>
+        </a>
+    </div>
 
     <script>
         var app = new Vue({
