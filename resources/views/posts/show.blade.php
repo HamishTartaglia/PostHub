@@ -110,7 +110,11 @@
                             <div class="row">
                                 <div class="col">
                                     <div v-for="profile in profiles" v-if="profile.id === comment.id">
-                                        <p class="posted">Posted By: @{{profile.username}}</p>
+                                        <p class="posted">Posted By: 
+                                            <a v-bind:href="getUserLink(profile.username)" class="user">
+                                                @{{profile.username}}
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col" id="created-comm">
@@ -174,6 +178,9 @@
                 },
                 getEditLink: function(id){
                     return 'https://posthub.test/comments/' + id + '/edit';
+                },
+                getUserLink: function(username){
+                    return 'https://posthub.test/profiles/' + username;
                 }
             }
         });
