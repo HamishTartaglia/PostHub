@@ -107,13 +107,17 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                                
                             <div class="row">
                                 <div class="col">
                                     <div v-for="profile in profiles" v-if="profile.id === comment.id">
                                         <p class="posted">Posted By: @{{profile.username}}</p>
                                     </div>
+                                </div>
+                                <div class="col" id="created-comm">
+                                    <p class="posted">
+                                        Posted: @{{ comment.created_at.substring(0,10) }}
+                                        at @{{ comment.created_at.substring(11,16) }}
+                                    </p>
                                 </div>
                             </div> 
                         </div>
