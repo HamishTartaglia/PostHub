@@ -77,12 +77,16 @@
             <h6>Comments:</h6>
 
             @if (Auth::check())
-                <textarea type="text" v-model="newComment" class="form-control" id="comment-text"></textarea>
+                <textarea type="text" v-model="newComment"  id="comment-text" required class="form-control @error('body') is-invalid @enderror" name="body">{{ old('body') }}</textarea>
                 <br>
+                <div v-if="errors !== ''">
+                    <div class="alert alert-danger" role="alert" id="comment-alert">
+                        <strong>@{{errors.substring(60)}}</strong>
+                    </div>
+                </div>
                 <button @click="createComment" class="btn">Submit</button>
-                <br>
-            @endif  
-            <br>
+                
+            @endif 
             @if ($post->comments->isEmpty())
                 <p>No Comments Yet!</p>
             @else
@@ -160,6 +164,7 @@
                 comments: [],
                 newComment: '',
                 profiles: [],
+                errors: '',
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post) }}")
@@ -168,8 +173,8 @@
                     this.getProfiles(this.comments[0].post_id);
                 })
                 .catch(response => {
-                    console.log(response)
-                })
+                        console.log(response);
+                    })
             },
             methods: {
                 createComment: function(){
@@ -183,8 +188,8 @@
                             this.newComment = '';
                             this.getProfiles(this.comments[0].post_id);
                         })
-                        .catch(response => {
-                            console.log(response);
+                        .catch(errors => {
+                            this.errors = JSON.stringify(errors.response.data).slice(0,-5);
                         })
                     @endif
                 },

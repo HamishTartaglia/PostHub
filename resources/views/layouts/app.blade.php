@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link href="{{ asset('js/app.js') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -71,24 +72,14 @@
 
         <main class="py-4">
             @if (session('message'))
-        
-                <p><b> {{ session('message') }} </b></p> 
+            <div class="d-flex justify-content-center">
+                <div class="alert alert-success" role="alert" id="messages">
+                    <strong>{{ session('message') }}</strong>
+                </div>
+            </div>
+            
             
             @endif
-            @if ($errors->any())
-                <div>
-                    <p>Errors:</p>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        
-                            <li> {{ $error}}</li>
-
-                        @endforeach
-
-                    </ul>
-                </div>                
-            @endif
-
             @yield('content')
         </main>
     </div>
