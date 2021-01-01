@@ -7,7 +7,6 @@ class NasaPicture
 {
 
     private $apiKey;
-    private $info;
     private $photoUrl;
     private $author;
     private $description;
@@ -19,7 +18,7 @@ class NasaPicture
         $this->getInfo();
     }
     
-    public function getInfo()
+    private function getInfo()
     {
         $client = new Client();
 
@@ -39,5 +38,25 @@ class NasaPicture
 
         $date = $decode->date;
         $this->date = $date;
+    }
+
+    public function getPhoto()
+    {
+        return $this->photoUrl;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
     }
 }
