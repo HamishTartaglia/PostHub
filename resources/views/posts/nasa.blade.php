@@ -5,6 +5,7 @@
     <div class="container px-4">
         <div class="row"id="posts-title">
             <div class="col" id="post-title-col">
+                <h5><u>NASA Astronomy Picture of the Day:</u></h5> 
                 <h5>{{$title}}</h5>
             </div>          
         </div>
