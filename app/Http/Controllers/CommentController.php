@@ -121,12 +121,14 @@ class CommentController extends Controller
 
     public function apiStore(Request $request, Post $post, $profile)
     {
-        // validation
+        $validatedData = $request->validate([
+            'body' => 'required|max:200',
+        ]);
 
         $profile = Profile::findOrFail($profile);
         
         $comment = new Comment;
-        $comment->body = $request['body'];
+        $comment->body = $validatedData['body'];
         $comment->profile_id = $profile->id;
         $comment->post_id = $post->id;
         $comment->save();
@@ -136,6 +138,10 @@ class CommentController extends Controller
 
         $profile->score = $profile->score + 10;
         $profile->save();
+
+        $poster = $post->profile;
+        $poster->score = $poster->score + 10;
+        $poster->save();
 
         event(new CommentAdded($comment->profile_id,$post->profile_id));
 
@@ -157,6 +163,14 @@ class CommentController extends Controller
 
     public function apiDestroy(Comment $comment)
     {
+        $profile = $comment->profile;
+        $profile->score = $profile->score - 10;
+        $profile->save();
+
+        $profile = $comment->post->profile;
+        $profile->score = $profile->score - 10;
+        $profile->save();
+
         $comment->delete();
         return true;
     }
