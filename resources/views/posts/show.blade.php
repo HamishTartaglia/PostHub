@@ -95,19 +95,13 @@
                                     <p class="posted">Posted By: 
                                         @{{profile.username}}</p>
                                 </div>
-                                
                                 <p>@{{ comment.created_at }}</p>
                             </div> 
                         </div>
                     </div>
-                    
                 </div>
-                
             @endif
         </div>
-
-        
-
     </div>
 
     <script>
@@ -117,6 +111,7 @@
                 comments: [],
                 newComment: '',
                 profiles: [],
+                link: '',
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post) }}")
@@ -138,6 +133,7 @@
                         .then(response => {
                             this.comments.push(response.data);
                             this.newComment = '';
+                            this.getProfiles(this.comments[0].post_id);
                         })
                         .catch(response => {
                             console.log(response);
@@ -145,14 +141,13 @@
                     @endif
                 },
                 getProfiles: function(id){
-                    //PUT IN MOUNTED!!!
-                axios.get('https://posthub.test/api/comment/' + id)
-                    .then(response =>{
-                        this.profiles = response.data;
-                    })
-                    .catch(response => {
-                        console.log(response)
-                    })
+                    axios.get('https://posthub.test/api/comment/' + id)
+                        .then(response =>{
+                            this.profiles = response.data;
+                        })
+                        .catch(response => {
+                            console.log(response)
+                        })
                 }
             }
         });
