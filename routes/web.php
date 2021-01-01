@@ -62,7 +62,7 @@ Route::put('comments/{comment}', 'CommentController@update')->name('comment.upda
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PostController@index')->name('home');
 
 Route::get('logout', 'ProfileController@logout')->name('logout');
 
