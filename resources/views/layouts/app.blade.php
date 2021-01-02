@@ -86,5 +86,18 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        var pusher = new Pusher('fb6aad9492c3703869d6', {
+            encrypted: true,
+            cluster: 'eu',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('user.{{Auth::id()}}');
+
+        channel.bind('App\\Events\\CommentAdded', function(data) {
+            alert(data.message);
+        });
+    </script>
 </body>
 </html>
