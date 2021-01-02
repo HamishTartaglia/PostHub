@@ -6,8 +6,17 @@
         <form method="POST" action="{{ route('post.store', $category->id)}}" id="create" enctype="multipart/form-data">
             @csrf
             <div>
+                @php
+                    $categories = App\Category::get();
+                @endphp
                 <div class="create-title">
-                    <h5>Create a post in {{$category->name}}</h5>
+                    <h5>Create a post in
+                        <select onchange="window.location.href=this.value;" id="category-select">
+                            @foreach ($categories as $category1)
+                                <option value="{{ route('post.create',['category' => $category1->name]) }}" {{$category->name == $category1->name ? 'selected' : '' }}>{{$category1->name}}</option>
+                            @endforeach
+                        </select>
+                    </h5>
                 </div><br>
                 <h5>Title: </h5>
                 <input type="text" name="title" value="{{ old('title') }} " class="form-control" @error('title') is-invalid @enderror required>
