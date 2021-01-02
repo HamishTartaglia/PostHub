@@ -97,7 +97,29 @@
 
         channel.bind('App\\Events\\CommentAdded', function(data) {
             if(data.commentUser.user_id != data.poster.user_id){
-                alert(data.message);
+                console.log(data);
+
+                if (!("Notification" in window)) {
+                    alert("Your browser doesn't support notifications");
+                }
+
+                else if (Notification.permission === "granted") {
+                    var notification = new Notification(data.message, {
+                        body: "Click here to view the post", 
+                        icon: "{{ asset('favicon.ico') }}",
+                    });
+                }
+
+                else if (Notification.permission !== "denied") {
+                    Notification.requestPermission().then(function (permission) {
+                        if (permission === "granted") {
+                            var notification = new Notification(data.message, {
+                                body: "Click here to view the post", 
+                                icon: "{{ asset('favicon.ico') }}",
+                            });
+                        }
+                    });
+                }                
             }
         });
     </script>
