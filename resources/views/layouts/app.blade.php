@@ -108,6 +108,9 @@
                         body: "Click here to view the post", 
                         icon: "{{ asset('favicon.ico') }}",
                     });
+                    notification.onclick = () => {
+                        window.open(window.location.href="/categories/" + data.category + "/" + data.post);
+                    };
                 }
 
                 else if (Notification.permission !== "denied") {
@@ -117,6 +120,9 @@
                                 body: "Click here to view the post", 
                                 icon: "{{ asset('favicon.ico') }}",
                             });
+                            notification.onclick = () => {
+                                window.open(window.location.href);
+                            };
                         }
                     });
                 }                

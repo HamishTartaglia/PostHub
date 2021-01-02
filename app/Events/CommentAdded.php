@@ -20,7 +20,7 @@ class CommentAdded implements ShouldBroadcast
     public $poster;
     public $message;
     public $commentUser;
-    public $comment;
+    public $category;
 
     /**
      * Create a new event instance.
@@ -28,17 +28,15 @@ class CommentAdded implements ShouldBroadcast
      * @return void
      */
     public function __construct(Comment $comment,Post $post)
-    {
-        $post = $post;
-        $comment = $comment;
-        $commentUser = $comment->profile;
-        $poster = $post->profile;
+    { 
+        $commentUser = $comment->profile->username;
+        $category = $post->category->name;
 
-        $this->post = $post;
-        $this->poster = $poster;
-        $this->comment = $comment;
+        $this->poster = $post->profile;
         $this->commentUser = $commentUser;
-        $this->message = "{$commentUser->username} commented on your post";
+        $this->post = $post->id;
+        $this->category = $category;
+        $this->message = "{$commentUser} commented on your post";
     }
 
     /**
