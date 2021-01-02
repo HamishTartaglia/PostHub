@@ -15,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Event\CommentAdded' => [
+        'App\Events\CommentAdded' => [
            'App\Listeners\CommentAddedListener'
         ],
     ];

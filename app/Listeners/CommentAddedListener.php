@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Event\CommentAdded;
+use App\Events\CommentAdded;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
