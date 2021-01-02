@@ -96,8 +96,9 @@
         var channel = pusher.subscribe('user.{{Auth::id()}}');
 
         channel.bind('App\\Events\\CommentAdded', function(data) {
-            console.log(data);
-            alert(data.message);
+            if(data.commentUser.user_id != data.poster.user_id){
+                alert(data.message);
+            }
         });
     </script>
 </body>
