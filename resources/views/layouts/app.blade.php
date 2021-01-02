@@ -96,6 +96,7 @@
         var channel = pusher.subscribe('user.{{Auth::id()}}');
 
         channel.bind('App\\Events\\CommentAdded', function(data) {
+            console.log(data);
             alert(data.message);
         });
     </script>

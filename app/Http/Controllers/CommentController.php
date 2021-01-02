@@ -143,7 +143,7 @@ class CommentController extends Controller
         $poster->score = $poster->score + 10;
         $poster->save();
 
-        event(new CommentAdded($comment->profile_id,$post->profile_id));
+        event(new CommentAdded($comment,$post));
 
         return $comment;
     }
