@@ -98,6 +98,7 @@
                                     <p>@{{ comment.body }}</p>
                                 </div>
                                 <div class="col">
+                                    @if (Auth::check())
                                     <div v-for="profile in profiles" v-if="profile.id === comment.id">
                                         <div v-if="profile.profile_id === <?php echo Auth::id(); ?>" id="edit-comm">
                                             <div class="row px-2">
@@ -131,6 +132,9 @@
                                             </div>
                                         </div> 
                                     </div>
+                                        
+                                    @endif
+                                    
                                 </div>
                             </div>
                             <div class="row">
