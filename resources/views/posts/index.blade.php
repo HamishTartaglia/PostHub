@@ -42,6 +42,9 @@
                                     <div class="col" id="post-info-score">
                                         <p class="posted">In: <a href = "{{ route('categories.show', ['category' => $post->category->name]) }}" class="user">{{ $post->category->name }}</a></p>
                                     </div>
+                                    <div class="col" id="post-info-score">
+                                        <p class="posted">Score: {{ $post->score }}</p>
+                                    </div>
                                     <div class="col" id="post-info-time">
                                         <p class="posted"> Posted: {{ $post->created_at->diffForHumans() }} </p>
                                     </div>

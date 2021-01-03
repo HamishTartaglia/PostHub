@@ -29,14 +29,14 @@ class CommentAdded implements ShouldBroadcast
      */
     public function __construct(Comment $comment,Post $post)
     { 
-        $commentUser = $comment->profile->username;
+        $commentUser = $comment->profile;
         $category = $post->category->name;
 
         $this->poster = $post->profile;
         $this->commentUser = $commentUser;
         $this->post = $post->id;
         $this->category = $category;
-        $this->message = "{$commentUser} commented on your post";
+        $this->message = "{$commentUser->username} commented on your post";
     }
 
     /**

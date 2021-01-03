@@ -114,7 +114,7 @@ class ProfileController extends Controller
         $user->delete();
         $profile->delete();
 
-        return redirect()->route('home')->with('message','Post Deleted!');
+        return redirect()->route('home')->with('message','Profile Deleted!');
     }
 
     /**

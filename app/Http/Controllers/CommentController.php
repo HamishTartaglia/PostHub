@@ -171,6 +171,10 @@ class CommentController extends Controller
         $profile->score = $profile->score - 10;
         $profile->save();
 
+        $post = $comment->post;
+        $post->score = $post->score - 10;
+        $post->save();
+
         $comment->delete();
         return true;
     }

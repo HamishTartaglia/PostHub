@@ -166,7 +166,7 @@
     </div>
 
     <script>
-        var app = new Vue({
+        var comments = new Vue({
             el: "#comments",
             data: {
                 comments: [],

@@ -1,0 +1,217 @@
+[33me9b8d31[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m Added a welcome back message when the user logs in
+[33mcf78140[m Removed notification icon as it wont be used
+[33m15d7913[m Users are now taken to the post on which a comment has been added when they click the notification
+[33md21c9ad[m Notifications are now sent using desktop notifications rather than alerts
+[33m4a47183[m User will not get a notification if they comment on their own post
+[33m8a9f2e9[m Changed comment added event to take in comment and post instead of the profile_ids
+[33m3b20abe[m Added the script for pusher so when the event is triggered, users will get an alert box
+[33m971dbb9[m Added pusher CDN
+[33m3cf27bf[m AJAX now works when first comment is posted without refreshing page
+[33md666e9c[m Addded a border around post.show page
+[33m47cc8bc[m Added a dropdown list to easily change the category when creating the post
+[33m01941b9[m Added image previews to posts.index
+[33m78b8dec[m Fixed a bug where guest users couldnt see comments
+[33mee81c00[m Moved the back to top button to the bottom right of the page
+[33m41c2999[m Added a return to top button on post.show
+[33ma9eba6b[m Added a button to get to a random post from the category the user is on
+[33m8345d25[m Added buttons to get to nasa.show page
+[33mc3829a4[m Added a title on nasa.show page
+[33m23bc1e7[m Changed home route to post.index
+[33m61846eb[m Users that comment and the original poster get points for commenting
+[33m09d1401[m Added the nasa view - displays the picture of the day along with the details about it
+[33m1e70788[m Added a function in postController that send the data from the service provider to a view
+[33mf0d2416[m Moved the singleton definition to app service provider for the nasa api
+[33m9d22a4a[m Added getters for the information retrieved by the api
+[33mb965a41[m Added code to decode the json data retrieved from the api
+[33mad790ad[m Installed guzzle and performed a get request to nasa api using it and an api key
+[33m87919c9[m Created a service container for NasaPicture and created a singleton for it
+[33m7b5af22[m Validation added to comments
+[33m407f009[m Updated the comment.edit page to match the style of the website
+[33m0419fe5[m Fixed ajax error that would remove the incorrect comment from the screen when deleted
+[33m2fee673[m Users can now delete the comments on their own posts
+[33m7be4630[m Users can now delete their own comments
+[33m1ee754d[m Username on comments are now links to users profiles
+[33m2320622[m Time of comment is now shown
+[33m8d2fd7b[m Users can now edit their own comment on posts
+[33m4001a9f[m When user posts a new comment, username is now shown with it
+[33mff766d1[m Comments now show user the auther of them using AJAX
+[33mfe389ac[m Added validation messages when users enter incorrect data
+[33mee5e555[m Added image previews to profile.show page if posts have an image
+[33m25452d3[m Added a shadow and border to everywhere there is a list of posts e.g. posts.index
+[33m9cb0116[m Changed how post info (score, user etc) is shown on post.show
+[33mdae3db6[m Users can delete their own avatars
+[33m4058e01[m Profile pictures are now shown on profile page
+[33m4e82f22[m Users can now change their profile picture when editing their account
+[33m17c1bc9[m Users can now upload a profile picture when creating an account
+[33m92827fc[m Fixed how photos are stored when theyre uploaded
+[33mcfbeb09[m Fixed photos being shown to work with the new Photo model
+[33m6f77ba8[m Added functionality to photo factory and seeder
+[33mc195f46[m Added filename and morphs to photos migration and removed photo from posts migration
+[33m2a4001b[m Added polymorphic relationships to photo,post and profile models
+[33m4f66855[m Created Photo model with factory, seeder and migration - will be used in polymorphic rel
+[33m918b063[m Swapped newest and oldest ordering as they were the wrong way round
+[33mc1f7bf3[m Added an image preview on categories.show page if post has an image
+[33mc68048b[m Small UI updates to profile.show and post.show
+[33m5f2d1e3[m Changed where the create post button was
+[33mc73e29c[m Score added to each post on category.show
+[33mc95336f[m Added buttons to access order by routes for each category
+[33md74309f[m Added routes to show the posts in order - newest oldest and highest score
+[33mbd20fb5[m Posts now get points for users commenting on them
+[33m38b3009[m Users now get points for commenting and posting
+[33m2804d14[m Added a notification bell in the top right if user is logged in
+[33m6913c2c[m Broadcast event is sent when user comments on a post
+[33m39a755c[m Event changed to take in profiles of the commenter and original poster
+[33m72dc646[m Pusher implemented with broadcast channel added
+[33mae826f0[m Added echo into bootstrap.js
+[33ma8a8215[m Event now implements shouldBroadcast
+[33m97cc9fb[m Added an event and listener - only dd(event)
+[33m1207b53[m Fixed error when users didnt upload an image
+[33m0e3302d[m Image is displayed on post.show page
+[33m3d0ae28[m Post controller stores the image in public/images with unique id
+[33m4c6d5dc[m Added an area to upload an image to post.create page
+[33m311e29b[m Added an image attribute to posts table -nullable
+[33m5b6be8f[m Profile.show page shows if the user is an admin of each category
+[33mfea9c72[m Added a sidebar for the category.show page to list the admins of that page
+[33m2a1b256[m Styled comment section for post.show page
+[33m950e856[m Changed the edit button to a bootstrap icon on post.show page
+[33me25ef74[m Styled and moved the edit and delete buttons to the top of the page on posts.show page
+[33m8517f6f[m Post title, body, tags, posted by and posted when styled on post.show page
+[33ma19a998[m Comments are now posted using AJAX
+[33mbb9747d[m Protected post and comment create routes from guest users
+[33m2fd53f3[m Admins can now delete comments for posts in the categories they are admins for
+[33m0954b6d[m Admins can now delete posts in the categories they are admins for
+[33m5663d84[m Creator of posts can now delete comments on it from other people
+[33mf356f80[m Admin seeder and factory created
+[33m47959a9[m Admin category pivot table created
+[33m8e9090c[m Admin migration and model created
+[33mbea1d5b[m Added a bootstrap icon pencil instead of an 'edit' button on profile.show page
+[33m4d6d1dd[m Tag checkboxes now work - save all tags checked
+[33m70619a2[m Added padding to tags div on post.create
+[33m15dbdda[m Tags are no longer autogenerated
+[33m280a9ec[m 50 posts are now seeded instead of 20
+[33mdaa4cc0[m Changed how tags look on post.create
+[33mf45c98c[m Tags added to create post page with checkboxes - no functionality though
+[33maa39239[m Redesigned the reset password page to fit with the style of other pages
+[33mb98fe12[m Changed position of create post button on category page
+[33m3ec24aa[m Each category page now shows the category
+[33m24ec324[m Added padding to login, register and forgot password pages
+[33m25753b2[m Create post button is only shown if user is logged in
+[33md8ed5dc[m Redesigned the forgot password page to fit with the style of other pages
+[33m4baa4ef[m Redesigned the register page to fit with the style of other pages
+[33mf6ecdc5[m Redesigned the login page to fit with the style of other pages
+[33mfd8f9ac[m Updated the style of the sidebar on profile.show page
+[33mb9bb3de[m profile.edit styled to look like the other edit pages
+[33m59a6dac[m added padding to categories.show to match with posts.index
+[33m5ee8574[m Styled posts.index to fit with other pages
+[33m76075cd[m Profiles.index now uses pagination
+[33m900822f[m Profiles.index is now styled the same as categories.index
+[33m877862c[m Post title on profile page now has a line under it
+[33mb7833b5[m Styled the categories.index page
+[33maa4a085[m Post.edit now has the same layout and style as post.create
+[33me4d1d4e[m Styled the cancel and submit buttons on the post.create page
+[33m5a84f1f[m Styled the text areas on the post.create page
+[33m60de2ab[m Added a line under the title on post.create page
+[33m287e2de[m Added a title for post.create page
+[33m2e6c4cd[m Change input types to text areas for creating a post
+[33mc6ea410[m Styled the headings and submit button when creating a post
+[33md166459[m Centered everything on the post create page
+[33mb65216d[m Added the category for each post on profile.show page
+[33m425b3fd[m 'Posts:' title is now in the center of the posts rather than to the left
+[33m9545f73[m Pagination is now used on profile page for posts
+[33m84a5b2f[m Posts on profile.show page now span the width of the page
+[33mee8443a[m Posts on profile.show page are now shown the same as on category.show page
+[33ma3ac66f[m Border is now only as long as the content inside it
+[33ma6ea214[m Border added to sidebar on profile page
+[33m5990133[m Categories posted in section is not displayed if user hasnt made any posts
+[33m3bb81ae[m Profile says 'no posts yet' if user has no posts
+[33m2fc0f27[m Formatted the logout and delete button on profile page
+[33m5d54fa5[m Sidebar now shows all relevant info
+[33m28daa95[m Username is now a h5 and it fits the colour theme on user profile page
+[33m28a9cb3[m Sidebar added to profile.show page - user info displayed on it
+[33mea1bd2f[m Everything on profile.show is now in a 'container' div
+[33md26a338[m Moved the create post to the top of the page and styled it
+[33m6b0e06d[m Changed formatting of posted by and when posted text for each post
+[33m073ef89[m Post title and border colour matches the favicon and logo
+[33mee6e82d[m Previous and next links are now centered at the bottom of the page
+[33mf9bcf82[m Home button is now the same colour as the favicon - blue
+[33m011019e[m Time when post was posted is now smalled - 12px
+[33md2801f5[m Pagination is now 10 per page rather than 5
+[33m43cc8f6[m Added padding to each post when displayed in a list view
+[33mae630e5[m Added formating to 'posted by' for each post
+[33m13ad631[m Post body is now a lighter colour than the heading
+[33m6fb681a[m Only first 100 characters of post body is displayed on category show page
+[33mc3f724b[m Div doesnt move when mouse hovers on it now
+[33mac92212[m Made the whole post div clickable and adds a border when mouse hovers on it
+[33me61ade7[m Added a css file and linked it
+[33medba3d2[m Post index page and category show pages now dont show pullet point for each post
+[33ma28078b[m Added spacing inbetween the navbar categories
+[33m92c2d08[m Formatted the navbar so it looks good now
+[33m6a9dcb4[m Post index page and category show pages now in 'container' div
+[33me4fa1ab[m Bootstrap added
+[33mfcf3836[m Removed duplicated in 'categories posted in' section on each profile
+[33m39a5f9b[m Api route to store comments added with controller function
+[33m074c36a[m Only the comment text is now shown using ajax
+[33m468c32e[m Comments are now shown with ajax - displayed in JSON
+[33m13f45da[m Axios added for ajax
+[33m4f91360[m Added api route and controller function to get comments for a post
+[33m4719800[m Vue.js has been imported to layout file
+[33m177ca76[m Users can now delete their own accounts
+[33mde35761[m Profiles now show when they were created
+[33mc0ccfe8[m Each user can only edit their own profile
+[33m2cc9d99[m Authorisation is now done using middleware rather than in controller
+[33ma82b907[m Only the poster of the comment can update or delete the comment
+[33m0e06185[m Added a policy for posts - for updating and deleting posts for authorised users
+[33m4f1c33f[m Only user that created the post can edit or delete it now - uses gates
+[33m2569037[m Username now appears in top right and when clicked - user is taken to their profile
+[33md895afa[m Changed description to bio
+[33m464b21a[m Can now edit profile descriptions
+[33meece7a2[m All 5 categories are now hard coded and 20 posts are seeded instead of 10
+[33me0c28fe[m Posts and comment show when it was posted
+[33mde66701[m Username may only contain letters, numbers, dashes and underscores
+[33m7288460[m Username must now be unique when create user
+[33mf44515c[m Profile is now automatically created when user is created
+[33m84c7c3d[m Can now logout
+[33mb296eac[m User id when posting and editing comments and posts is automatically set to current user logged in
+[33mce3a512[m Comment box now has placeholder instead of a 'p' tag
+[33m9d900b4[m Posts index is now default page
+[33mb0c92dc[m When user presses cancel when making a post - theyre returned to that category page
+[33mc629bf8[m Added flash messages and errors to new layout file - shows if any exist
+[33m1f00f7e[m Fixed error where Auth couldnt be found - added namespace
+[33m4aed8a5[m Changed layout file that is used for all pages
+[33m7f345f6[m Changed email address and name that emails are sent from
+[33m1c33318[m Added a favicon - PH
+[33mb0ffe6c[m Authentication added
+[33ma813fe2[m Can now edit comments
+[33me88f464[m Can now edit posts
+[33md6e259c[m Can now delete comments
+[33m3e7046f[m URL is now 'categories/catname/postid' to show a post
+[33mb433a1d[m Can now delete posts
+[33m1557aa5[m Posts now also show body and username on category index page
+[33m0e18cc6[m Fixed 404 error after creating a post - was result of changing url from id to name
+[33mf6094c5[m Can now added comments on a post
+[33m950505d[m Comment index added
+[33m1272bc4[m Profiles and categories url now found by the name rather than id number
+[33m48e68d1[m Comments now shown on posts
+[33m7266b34[m Each category page now has pagination for posts
+[33m2f8fd43[m Post categories are automatically chosen rather than manually chosen
+[33m6e431e9[m Create post on category page instead of post index and category select is dropdown list
+[33ma6bd20b[m Can now create posts - have to manually enter profile
+[33m6f9d333[m Added pagination to posts
+[33m6cc7f58[m Each profile now shows what categories they have posted in
+[33mcedd7ec[m Tags are now shown for each post
+[33m7c79fb0[m Can now navigate to the profile and category pages of that post from the post
+[33mf1f05b6[m Category.show added - show all posts in that category
+[33m27e2d71[m Category controller and view created - shows all categories
+[33md35b64f[m Profile.show added
+[33mb52a761[m Post.show view added
+[33m24ecff0[m Profile view and controller added
+[33mc2f6ba1[m Posts view and controller added
+[33meacffdc[m Basic layout file added
+[33m344c3dc[m Factories added to seeders
+[33m939e6d1[m All factories with functionality created - faker etc
+[33mf636401[m Seeders created for all models - at least one model created with relationships
+[33m16b77cd[m Relationships added to models
+[33m2ef409f[m All attributes and relationships / foreign ids added to migrations
+[33m4c51d32[m Migrations made for all models - no relationships made yet
+[33mca0a24b[m Category, comment, post, profile, user and tag Model created
+[33m67ae337[m Initial Commit

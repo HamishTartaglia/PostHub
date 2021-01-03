@@ -69,11 +69,14 @@
 
         <main class="py-4">
             @if (session('message'))
-            <div class="d-flex justify-content-center">
-                <div class="alert alert-success" role="alert" id="messages">
-                    <strong>{{ session('message') }}</strong>
+            <div class="container">
+                <div class="d-flex justify-content-center" id="messages-div">
+                    <div class="alert alert-success" role="alert" id="messages">
+                        <strong>{{ session('message') }}</strong>
+                    </div>
                 </div>
             </div>
+            
             
             
             @endif

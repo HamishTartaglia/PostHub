@@ -4,8 +4,6 @@
 
     <div class="container px-4">
         <div class="d-flex" id="wrapper">
-
-        
             <div class="border-right shadow p-3 mb-5 bg-white" id="admin-sidebar">
 
                 <h5>Sort:</h5>

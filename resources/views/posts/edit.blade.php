@@ -28,25 +28,7 @@
                     <strong>{{ $message }}</strong>
                 </div>
             @enderror
-    
-            {{--
-            <p>Category ID: <input type="text" name="category_id"
-                value="{{ old('category_id') }} "></p>
-                
-    
-            <select name = "category_id">
-                @foreach ($categories as $category)
-    
-                    <option value="{{ $category->id }}"
-                        @if ($category->id == old('category_id'))
-                            selected="selected"
-                        @endif
-                        >
-                        {{ $category->name}}
-                    </option>
-                    
-                @endforeach
-                --}}
+            
             <div class="navbar">
                 <a href = "{{ route('posts.show', ['category' => $category,'post' => $post->id ])}}"><button type="button" class="btn">Cancel</button></a>
                 <input type="submit" value="Submit" class="btn">
