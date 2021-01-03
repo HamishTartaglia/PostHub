@@ -37,4 +37,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated($request, $user)
+    {
+        $request->session()->flash('message', 'Welcome back ' . $user->profile->username . '!');
+        return redirect()->intended($this->redirectPath());
+    }
 }

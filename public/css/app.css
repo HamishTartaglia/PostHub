@@ -178,7 +178,6 @@ img{
   margin-top: 10px;
 }
 #messages{
-  padding-left: 10px;
   text-align: center;
 }
 #del-comment{
@@ -207,4 +206,10 @@ img{
   color: #0065bd;
   font-weight: 500;
   margin: 0;
+}
+#img-preview{
+  max-width: 100px;
+}
+#messages-div{
+  margin-left: 40px;
 }
