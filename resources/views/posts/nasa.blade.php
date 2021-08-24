@@ -16,7 +16,7 @@
             <h6>{{$description}}</h6>       
         </div>
         <div class="d-flex justify-content-center" id="post-pic">
-            <img src={{$photo}}>
+            <img src={{$photo}} alt="NASA-picture-of-the-day"/>
         </div>
 
 

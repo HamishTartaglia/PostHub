@@ -70,7 +70,7 @@
                                                 $filename = $post->photo->filename;
                                                 $filename = ltrim($filename, 'public');
                                             @endphp 
-                                            <img src ="{{ asset($filename)}}" id="small-img">
+                                            <img src ="{{ asset($filename)}}" id="small-img" alt="post-image">
                                         @endif
                                     </div>
                                     

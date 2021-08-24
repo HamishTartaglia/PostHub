@@ -2,7 +2,7 @@
 
 namespace App;
 use GuzzleHttp\Client;
-
+//Used for the Nasa picture a day page
 class NasaPicture
 {
 

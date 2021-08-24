@@ -19,7 +19,7 @@
                     </h5>
                 </div><br>
                 <h5>Title: </h5>
-                <input type="text" name="title" value="{{ old('title') }} " class="form-control" @error('title') is-invalid @enderror required>
+                <input type="text" name="title" value="{{ old('title') }} " class="form-control" @error('title') is-invalid @enderror>
                 <br>
                 @error('title')
                     <div class="alert alert-danger" role="alert">
@@ -28,7 +28,7 @@
                 @enderror
 
                 <h5>Body: </h5>
-                <textarea type="text" name="body" class="form-control" id="post-body" @error('body') is-invalid @enderror required>{{ old('body') }}</textarea>
+                <textarea type="text" name="body" class="form-control" id="post-body" @error('body') is-invalid @enderror>{{ old('body') }}</textarea>
                 <br>
                 @error('body')
                     <div class="alert alert-danger" role="alert">
